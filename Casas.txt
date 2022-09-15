@@ -1,0 +1,11 @@
+
+<1, Medicx,'texto' ,50000>
+<1, Advogadx,'texto' ,50000>
+<1, Engenheirx,'texto' ,30000>
+<1, Professxr,'texto' ,20000>
+<1, Artista,'texto' ,24000>
+<1, Tecnico de TI,'texto' ,16000>
+<1, Tecnico de Enfermagem,'texto' ,12000>
+<1, YouTuber,'texto' ,10000>
+
+<2,>

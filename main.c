@@ -1,33 +1,18 @@
+#include "lista_enc.h"
+#include "lista_enc_dupla.c"
+#include "lista_enc.h"
+#include "lista_enc_dupla.h"
 #include <stdio.h>
 #include <stdlib.h>
 
 
-#define QUANT_PARTIDOS 4
-
-#define TRUE 1
-#define FALSE 0
-
-int vencedor(int *votos, int *idxVencedor, float *percentual);
-void imprimirPartidos(char partidos[QUANT_PARTIDOS][10], int *numeros);
-void imprimirNumeroDeVotos(int *votos, int votosInvalidos);
-void printVencedor(int naoEmpate, float percentual, char* partido);
-int votar(int *votos, int *numeros);
-
 int main(){
 
-   int opcao, naoEmpate;
-   int votosInvalidos = 0;
-   int idxVencedor;
-   float percentual;
-   
-   int votos[QUANT_PARTIDOS] = {1,3,3,1};
-   int numeros[QUANT_PARTIDOS] = {4, 2, 9, 5};
-   char partidos[QUANT_PARTIDOS][10] = {"Partido A", "Partido B", "Partido C", "Partido D"};
-   
+   int opcao;
+
     do{
-   	  //system("cls");
-        system("clear");
-    
+        system("cls");
+
         printf("==========================================================================================================\n");
         printf("=====    ====    =====      =====    =========       ======  ==========  ====  ==    ==       ======  ====\n");
         printf("======  ====  ==  ===   ==   ===  ==  ========  ====  ====    =========  ====  ===  ===  ====  ====    ===\n");
@@ -39,13 +24,12 @@ int main(){
         printf("=  ===  ====  ==  ===   ==   ===  ==  ========  ====  ==  ====  =========    =====  ===  ====  ==  ====  =\n");
         printf("==     ======    =====      =====    =========       ===  ====  ==========  =====    ==       ===  ====  =\n");
         printf("==========================================================================================================\n");
-        
-      
+
+
         printf("----- MENU -----\n");
         printf("1 - Inicie o Jogo \n");
-        printf("2 -  \n");
-        printf("3 - Votos Validos e Invalidos \n");
-        printf("4 - Sair \n");
+        printf("2 - Regras \n");
+        printf("3 - Sair \n");
         printf("----- ---- -----\n");
         printf("Informe uma opcao: ");
         scanf("%d", &opcao);
@@ -73,7 +57,7 @@ int main(){
             //system("pause");
       }
    }while(opcao != 4);
-   
+
    //printVencedor(naoEmpate, percentual, partidos[idxVencedor]); //printa o vencedor
 
    return 0;
