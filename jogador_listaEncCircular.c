@@ -10,7 +10,7 @@ ListaEncCircular* criaJogador(){
 }
 
 // Funcao que destroi uma lista
-void destroiLista(ListaEncCircular *lista){
+void destroiListaCircular(ListaEncCircular *lista){
    NodoLEncCircular *aux = lista->prim;
    while(aux != NULL){
        NodoLEncCircular *tmp = aux->prox;

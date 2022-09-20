@@ -24,7 +24,7 @@ typedef struct ListaEncCircular{
 ListaEncCircular* criaJogador();
 
 // Funcao que destroi uma lista
-void destroiLista(ListaEncCircular *lista);
+void destroiListaCircular(ListaEncCircular *lista);
 
 // Funcao que imprime todos os nodos de uma lista
 void imprimeListaDeJogadores(ListaEncCircular *lista);

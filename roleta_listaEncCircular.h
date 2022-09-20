@@ -7,38 +7,38 @@ typedef struct{
 
 typedef Roleta Info;
 
-typedef struct NodoLEncCircular{
+typedef struct NodoLEncCircularRoleta{
    Info info;
-   struct NodoLEncCircular *prox;
-} NodoLEncCircular;
+   struct NodoLEncCircularRoleta *prox;
+} NodoLEncCircularRoleta;
 
-typedef struct ListaEncCircular{
+typedef struct ListaEncCircularRoleta{
    struct NodoLEncCircular *prim;
    struct NodoLEncCircular *fim;
-} ListaEncCircular;
+} ListaEncCircularRoleta;
 
 // Funcao que cria uma lista
-ListaEncCircular* criaLista();
+ListaEncCircularRoleta* criaLista();
 
 // Funcao que destroi uma lista
-void destroiLista(ListaEncCircular *lista);
+void destroiListaRoleta(ListaEncCircularRoleta *lista);
 
 // Funcao que imprime todos os nodos de uma lista
-void imprimeLista(ListaEncCircular *lista);
+void imprimeListaRoleta(ListaEncCircularRoleta *lista);
 
 // Funcao que insere um nodo no inicio de uma lista
-int insereInicioLista(ListaEncCircular *lista, Info info);
+int insereInicioListaRoleta(ListaEncCircularRoleta *lista, Info info);
 
 // Funcao que resgata um nodo com uma informacao de uma lista
-NodoLEncCircular* buscaInfoLista(ListaEncCircular* lista, int numero);
+NodoLEncCircularRoleta* buscaInfoListaRoleta(ListaEncCircularRoleta* lista, int numero);
 
 // Funcao que remove um nodo com uma informacao de uma lista
-int removeInfoLista(ListaEncCircular* lista, int numero);
+int removeInfoListaRoleta(ListaEncCircularRoleta* lista, int numero);
 
 void iniciaRoleta();
 
 int sorteiaNumero();
 
-void rodaRoleta(ListaEncCircular *lista);
+void rodaRoleta(ListaEncCircularRoleta *lista);
 
 #endif

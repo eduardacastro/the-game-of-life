@@ -1,7 +1,5 @@
-//#include "jogo.c"
-//#include "lista_enc_dupla.c"
-#include "jogo.h"
-#include "lista_enc_dupla.h"
+#include "jogador_listaEncCircular.h"
+#include "tabuleiro_lista_enc_dupla.h"
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -15,7 +13,7 @@ int main(){
 //    lista = criaJogador();
 
     //int sorteiNumero();
-    roleta();
+    iniciaTabuleiro();
 //   int opcao;
 //
 //    do{
