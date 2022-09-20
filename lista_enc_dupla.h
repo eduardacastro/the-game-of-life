@@ -8,12 +8,12 @@ typedef struct{
    int tipoDeCasa;
    char textoDaCasa[TAM_MAX_TEXTOCASA];
    int dinheiro;
-} Aluno;
+} Casa;
 
-typedef Casa Info;
+typedef Casa Informacao;
 
 typedef struct nodoLEnc2{
-   Info info;
+   Informacao info;
    struct nodoLEnc2 *ant;
    struct nodoLEnc2 *prox;
 } NodoLEnc2;
@@ -32,12 +32,18 @@ void destroiLista(ListaEnc2 *lista);
 void imprimeLista(ListaEnc2 *lista);
 
 // Funcao que insere um nodo no inicio de uma lista
-int insereInicioLista(ListaEnc2 *lista, Info info);
+int insereInicioLista(ListaEnc2 *lista, Informacao info);
 
 // Funcao que resgata um nodo com uma informacao de uma lista
 NodoLEnc2* buscaInfoLista(ListaEnc2* lista, int matricula);
 
 // Funcao que remove um nodo com uma informacao de uma lista
 int removeInfoLista(ListaEnc2* lista, int matricula);
+
+void imprimeRoleta();
+
+void imprimeSlogan();
+
+void adicionaCasasNoTabuleiro();
 
 #endif
