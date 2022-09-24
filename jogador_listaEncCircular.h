@@ -8,34 +8,34 @@ typedef struct{
    int familia;
 } Jogador;
 
-typedef Jogador Info;
+typedef Jogador InfoJogador;
 
-typedef struct NodoLEncCircular{
-   Info info;
-   struct NodoLEncCircular *prox;
-} NodoLEncCircular;
+typedef struct NodoLEncCircularJogador{
+   InfoJogador info;
+   struct NodoLEncCircularJogador *prox;
+} NodoLEncCircularJogador;
 
-typedef struct ListaEncCircular{
-   struct NodoLEncCircular *prim;
-   struct NodoLEncCircular *fim;
-} ListaEncCircular;
+typedef struct ListaEncCircularJogador{
+   struct NodoLEncCircularJogador *prim;
+   struct NodoLEncCircularJogador *fim;
+} ListaEncCircularJogador;
 
 // Funcao que cria uma lista
-ListaEncCircular* criaJogador();
+ListaEncCircularJogador* criaJogador();
 
 // Funcao que destroi uma lista
-void destroiListaCircular(ListaEncCircular *lista);
+void destroiListaCircularJogador(ListaEncCircularJogador *lista);
 
 // Funcao que imprime todos os nodos de uma lista
-void imprimeListaDeJogadores(ListaEncCircular *lista);
+void imprimeListaDeJogadores(ListaEncCircularJogador *lista);
 
 // Funcao que insere um nodo no inicio de uma lista
-int insereInicioLista(ListaEncCircular *lista, Info info);
+int insereInicioListaJogador(ListaEncCircularJogador *lista, InfoJogador info);
 
 // Funcao que resgata um nodo com uma informacao de uma lista
-NodoLEncCircular* buscaInfoLista(ListaEncCircular* lista, int numJogador);
+NodoLEncCircularJogador* buscaInfoListaJogador(ListaEncCircularJogador* lista, int numJogador);
 
 // Funcao que remove um nodo com uma informacao de uma lista
-int removeInfoLista(ListaEncCircular* lista, int numJogador);
+int removeInfoListaJogador(ListaEncCircularJogador* lista, int numJogador);
 
 #endif

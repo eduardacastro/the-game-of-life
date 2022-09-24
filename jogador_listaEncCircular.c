@@ -3,17 +3,17 @@
 #include <stdlib.h>
 
 
-ListaEncCircular* criaJogador(){
-   ListaEncCircular *lista = (ListaEncCircular*)malloc(sizeof(ListaEncCircular));
+ListaEncCircularJogador* criaJogador(){
+   ListaEncCircularJogador *lista = (ListaEncCircularJogador*)malloc(sizeof(ListaEncCircularJogador));
    lista->prim = NULL;
    return lista;
 }
 
 // Funcao que destroi uma lista
-void destroiListaCircular(ListaEncCircular *lista){
-   NodoLEncCircular *aux = lista->prim;
+void destroiListaCircularJogador(ListaEncCircularJogador *lista){
+   NodoLEncCircularJogador *aux = lista->prim;
    while(aux != NULL){
-       NodoLEncCircular *tmp = aux->prox;
+       NodoLEncCircularJogador *tmp = aux->prox;
        free(aux); // Cuidar ordem do free
        aux = tmp;
    }
@@ -21,8 +21,8 @@ void destroiListaCircular(ListaEncCircular *lista){
 }
 
 // Funcao que imprime todos os nodos de uma lista
-void imprimeJogador(ListaEncCircular *lista){
-    NodoLEncCircular *aux;
+void imprimeJogador(ListaEncCircularJogador *lista){
+    NodoLEncCircularJogador *aux;
 	int flag = 0;
     printf("-----------------------------------------\n");
    
@@ -39,8 +39,8 @@ void imprimeJogador(ListaEncCircular *lista){
 }
 
 // Funcao que insere um nodo no inicio de uma lista
-int insereInicioLista(ListaEncCircular *lista, Info info){
-    NodoLEncCircular *novo = (NodoLEncCircular*)malloc(sizeof(NodoLEncCircular));
+int insereInicioListaJogador(ListaEncCircularJogador *lista, InfoJogador info){
+    NodoLEncCircularJogador *novo = (NodoLEncCircularJogador*)malloc(sizeof(NodoLEncCircularJogador));
    
     if (lista->prim == NULL){
         novo->info = info;
@@ -58,8 +58,8 @@ int insereInicioLista(ListaEncCircular *lista, Info info){
 }
 
 // Funcao que resgata um nodo com uma informacao de uma lista
-NodoLEncCircular* buscaInfoLista(ListaEncCircular* lista, int num){
-   NodoLEncCircular *aux;
+NodoLEncCircularJogador* buscaInfoJogadorListaJogador(ListaEncCircularJogador* lista, int num){
+   NodoLEncCircularJogador *aux;
    int i = 0;
    aux = lista->prim;
    for(i = 1; i <= num; i++){
@@ -72,9 +72,9 @@ NodoLEncCircular* buscaInfoLista(ListaEncCircular* lista, int num){
 }
 
 // Funcao que remove um nodo com uma informacao de uma lista
-int removeInfoLista(ListaEncCircular* lista, int numJogador){
-    NodoLEncCircular* ant = NULL;
-    NodoLEncCircular *aux = lista->prim; 
+int removeInfoListaJogador(ListaEncCircularJogador* lista, int numJogador){
+    NodoLEncCircularJogador* ant = NULL;
+    NodoLEncCircularJogador *aux = lista->prim; 
     while(aux != NULL && aux->info.numJogador != numJogador){
         ant = aux;
         aux = aux->prox;
@@ -92,13 +92,13 @@ int removeInfoLista(ListaEncCircular* lista, int numJogador){
 
 void iniciaJogador(){
 	int retorno, numJogadores;
-	ListaEncCircular *lista;
+	ListaEncCircularJogador *lista;
 	lista = criaJogador();
        
-	Info info1 = {1,0,10000,1};
-	Info info2 = {2,0,10000,1};
-	Info info3 = {3,0,10000,1};
-	Info info4 = {4,0,10000,1};
+	InfoJogador info1 = {1,0,10000,1};
+	InfoJogador info2 = {2,0,10000,1};
+	InfoJogador info3 = {3,0,10000,1};
+	InfoJogador info4 = {4,0,10000,1};
 
     printf("Quantos jogadores iram jogar?");
     scanf("%d", &numJogadores);
@@ -106,25 +106,25 @@ void iniciaJogador(){
     switch (numJogadores)
     {
     case 1:
-        retorno = insereInicioLista(lista, info1);
+        retorno = insereInicioListaJogador(lista, info1);
         imprimeJogador(lista);
         break;
     case 2:
-        retorno = insereInicioLista(lista, info2); // retorno = 1
-	    retorno = insereInicioLista(lista, info1); // retorno = 1
+        retorno = insereInicioListaJogador(lista, info2); // retorno = 1
+	    retorno = insereInicioListaJogador(lista, info1); // retorno = 1
 	    imprimeJogador(lista);
         break;
     case 3:
-    	retorno = insereInicioLista(lista, info3); // retorno = 1
-        retorno = insereInicioLista(lista, info2); // retorno = 1
-        retorno = insereInicioLista(lista, info1); // retorno = 1
+    	retorno = insereInicioListaJogador(lista, info3); // retorno = 1
+        retorno = insereInicioListaJogador(lista, info2); // retorno = 1
+        retorno = insereInicioListaJogador(lista, info1); // retorno = 1
         imprimeJogador(lista);
         break;
     case 4:
-        retorno = insereInicioLista(lista, info4); // retorno = 1
-        retorno = insereInicioLista(lista, info3); // retorno = 1
-        retorno = insereInicioLista(lista, info2); // retorno = 1
-        retorno = insereInicioLista(lista, info1); // retorno = 1
+        retorno = insereInicioListaJogador(lista, info4); // retorno = 1
+        retorno = insereInicioListaJogador(lista, info3); // retorno = 1
+        retorno = insereInicioListaJogador(lista, info2); // retorno = 1
+        retorno = insereInicioListaJogador(lista, info1); // retorno = 1
         imprimeJogador(lista);
         break;
     default:

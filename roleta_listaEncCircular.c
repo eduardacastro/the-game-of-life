@@ -2,15 +2,15 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-ListaEncCircular* criaLista(){
-   ListaEncCircular *lista = (ListaEncCircular*)malloc(sizeof(ListaEncCircular));
+ListaEncCircularRoleta* criaLista(){
+   ListaEncCircularRoleta *lista = (ListaEncCircularRoleta*)malloc(sizeof(ListaEncCircularRoleta));
    lista->prim = NULL;
    return lista;
 }
 
 // Funcao que insere um nodo no inicio de uma lista
-int insereInicioLista(ListaEncCircular *lista, Info info){
-   NodoLEncCircular *novo = (NodoLEncCircular*)malloc(sizeof(NodoLEncCircular));
+int insereInicioListaRoleta(ListaEncCircularRoleta *lista, InfoRoleta info){
+   NodoLEncCircularRoleta *novo = (NodoLEncCircularRoleta*)malloc(sizeof(NodoLEncCircularRoleta));
    
 	if (lista->prim == NULL){
 		novo->info = info;
@@ -42,8 +42,8 @@ int sorteiaNumero(){
 }
 
 // Funcao que resgata um nodo com uma informacao de uma lista
-NodoLEncCircular* buscaInfoLista(ListaEncCircular* lista, int num){
-   NodoLEncCircular *aux;
+NodoLEncCircularRoleta* buscaInfoListaRoleta(ListaEncCircularRoleta* lista, int num){
+   NodoLEncCircularRoleta *aux;
    int i = 0;
    aux = lista->prim;
    for(i = 1; i <= num; i++){
@@ -57,34 +57,34 @@ NodoLEncCircular* buscaInfoLista(ListaEncCircular* lista, int num){
 
 void iniciaRoleta(){
 	int retorno, sorteioDeNumero;
-	ListaEncCircular *lista;
+	ListaEncCircularRoleta *lista;
 	lista = criaLista();
    
-	Info info1 = {1};
-	Info info2 = {2};
-	Info info3 = {3};
-	Info info4 = {4};
-	Info info5 = {5};
+	InfoRoleta info1 = {1};
+	InfoRoleta info2 = {2};
+	InfoRoleta info3 = {3};
+	InfoRoleta info4 = {4};
+	InfoRoleta info5 = {5};
 	
-	retorno = insereInicioLista(lista, info5); // retorno = 1
-	retorno = insereInicioLista(lista, info4); // retorno = 1
-	retorno = insereInicioLista(lista, info3); // retorno = 1
-    retorno = insereInicioLista(lista, info2); // retorno = 1
-	retorno = insereInicioLista(lista, info1); // retorno = 1
+	retorno = insereInicioListaRoleta(lista, info5); // retorno = 1
+	retorno = insereInicioListaRoleta(lista, info4); // retorno = 1
+	retorno = insereInicioListaRoleta(lista, info3); // retorno = 1
+    retorno = insereInicioListaRoleta(lista, info2); // retorno = 1
+	retorno = insereInicioListaRoleta(lista, info1); // retorno = 1
 
 	rodaRoleta(lista); 
 }
 
-void rodaRoleta(ListaEncCircular *lista){
-	buscaInfoLista(lista, sorteiaNumero());
+void rodaRoleta(ListaEncCircularRoleta *lista){
+	buscaInfoListaRoleta(lista, sorteiaNumero());
 }
 
 
 // Funcao que destroi uma lista
-void destroiLista(ListaEncCircular *lista){
-   NodoLEncCircular *aux = lista->prim;
+void destroiLista(ListaEncCircularRoleta *lista){
+   NodoLEncCircularRoleta *aux = lista->prim;
    while(aux != NULL){
-       NodoLEncCircular *tmp = aux->prox;
+       NodoLEncCircularRoleta *tmp = aux->prox;
        free(aux); // Cuidar ordem do free
        aux = tmp;
    }
@@ -102,9 +102,9 @@ void destroiLista(ListaEncCircular *lista){
 
 
 // Funcao que remove um nodo com uma informacao de uma lista
-int removeInfoLista(ListaEncCircular* lista, int numero){
-   NodoLEncCircular* ant = NULL;
-   NodoLEncCircular *aux = lista->prim; 
+int removeInfoListaRoleta(ListaEncCircularRoleta* lista, int numero){
+   NodoLEncCircularRoleta* ant = NULL;
+   NodoLEncCircularRoleta *aux = lista->prim; 
    while(aux != NULL && aux->info.numero != numero){
       ant = aux;
       aux = aux->prox;
@@ -121,7 +121,7 @@ int removeInfoLista(ListaEncCircular* lista, int numero){
 }
 
 
-void fimRoleta(){
-	//destroiLista(lista);
-}
+//void fimRoleta(){
+//	//destroiLista(lista);
+//}
 

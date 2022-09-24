@@ -5,16 +5,16 @@ typedef struct{
    int numero;
 } Roleta;
 
-typedef Roleta Info;
+typedef Roleta InfoRoleta;
 
 typedef struct NodoLEncCircularRoleta{
-   Info info;
+   InfoRoleta info;
    struct NodoLEncCircularRoleta *prox;
 } NodoLEncCircularRoleta;
 
 typedef struct ListaEncCircularRoleta{
-   struct NodoLEncCircular *prim;
-   struct NodoLEncCircular *fim;
+   struct NodoLEncCircularRoleta *prim;
+   struct NodoLEncCircularRoleta *fim;
 } ListaEncCircularRoleta;
 
 // Funcao que cria uma lista
@@ -27,7 +27,7 @@ void destroiListaRoleta(ListaEncCircularRoleta *lista);
 void imprimeListaRoleta(ListaEncCircularRoleta *lista);
 
 // Funcao que insere um nodo no inicio de uma lista
-int insereInicioListaRoleta(ListaEncCircularRoleta *lista, Info info);
+int insereInicioListaRoleta(ListaEncCircularRoleta *lista, InfoRoleta info);
 
 // Funcao que resgata um nodo com uma informacao de uma lista
 NodoLEncCircularRoleta* buscaInfoListaRoleta(ListaEncCircularRoleta* lista, int numero);
