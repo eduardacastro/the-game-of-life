@@ -1,9 +1,10 @@
 #ifndef _JOGADOR_LISTAENCCIRCULAR_H_
-#define _JOGADOR_LISTAENCCIRCULA_H_
+#define _JOGADOR_LISTAENCCIRCULAR_H_
 
 typedef struct{
    int numJogador;
    int posicao;
+   int salario;
    int dinheiro;
    int familia;
 } Jogador;

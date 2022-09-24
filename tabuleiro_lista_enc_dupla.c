@@ -1,5 +1,6 @@
 #include "tabuleiro_lista_enc_dupla.h"
 #include <stdio.h>
+#include <windows.h>
 #include <stdlib.h>
 
 // Funcao que cria uma lista
@@ -107,4 +108,51 @@ int removeInfoListaTabuleiro(ListaEnc2* lista, int numeroDaCasa){
    }
    return 0; // Nao encontrou
 }
+ //(tabuleiro,jogador1,8)
+void IniciaAndaCasas(ListaEnc2* tabuleiro, ListaEncCircularJogador *jogador, int numeroDeCasas){
+	NodoLEncCircularJogador *aux;
+	//NodoLEnc2 *auxtab;
+	
+	int flag = 0, num = 0;
+	
+	aux->info.posicao =+ numeroDeCasas;
+	num = aux->info.posicao;
+	
+	imprimeCasaAtual(num, tabuleiro);
+	
+	//auxtab = buscaInfoListaTabuleiro(tabuleiro, num);
+	
+//	printf("antes de acaoDaCasa");
+//	AcaoDaCasa(auxtab, aux);
+   
+   //return jogador
+}
 
+
+void imprimeCasaAtual(int num, ListaEnc2* tabuleiro){
+	NodoLEnc2 *auxtab;
+	system("cls");
+	auxtab = buscaInfoListaTabuleiro(tabuleiro, num);
+	
+	printf("\nCasa: %d |Texto: %s\n", auxtab->infoCasa.numeroDaCasa,
+                               				auxtab->infoCasa.textoDaCasa);	
+}
+
+
+void AcaoDaCasa(ListaEnc2 *casa, ListaEncCircularJogador *jogador){
+   
+  
+	switch(casa->prim->infoCasa.tipoDeCasa){
+		case 1: // casa de profissão
+			jogador->fim->info.salario = casa->prim->infoCasa.Dinheiro;
+			printf("\n\n\n Salario: %d",jogador->fim->info.salario);
+			break;
+//		case 2: // casa Perde Dinheiro/Ganho de Dinheiro
+//			
+//			break;
+//		case 3: //casa Dia Do Pagamento
+//			jogador->info.dinheiro = jogador->info.salario;
+//			break;
+	}
+	
+}

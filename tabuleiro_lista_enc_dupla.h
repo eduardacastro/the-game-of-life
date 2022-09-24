@@ -1,5 +1,8 @@
+#include "jogador_listaEncCircular.h"
+
 #ifndef _TABULEIRO_LISTA_ENC_DUPLA_H_
 #define _TABULEIRO_LISTA_ENC_DUPLA_H_
+
 
 #define TAM_MAX_TEXTO 80
 
@@ -42,5 +45,9 @@ NodoLEnc2* buscaInfoListaTabuleiro(ListaEnc2* lista, int matricula);
 
 // Funcao que remove um nodo com uma informacao de uma lista
 int removeInfoListaTabuleiro(ListaEnc2* lista, int matricula);
+
+void IniciaAndaCasas(ListaEnc2* tabuleiro, ListaEncCircularJogador *jogador, int numeroDeCasas);
+
+void imprimeCasaAtual(int num, ListaEnc2* tabuleiro);
 
 #endif

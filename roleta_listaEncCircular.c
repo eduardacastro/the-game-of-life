@@ -72,7 +72,7 @@ void iniciaRoleta(){
     retorno = insereInicioListaRoleta(lista, info2); // retorno = 1
 	retorno = insereInicioListaRoleta(lista, info1); // retorno = 1
 
-	rodaRoleta(lista); 
+	//rodaRoleta(lista); 
 }
 
 void rodaRoleta(ListaEncCircularRoleta *lista){
