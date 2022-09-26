@@ -3,7 +3,6 @@
 #ifndef _TABULEIRO_LISTA_ENC_DUPLA_H_
 #define _TABULEIRO_LISTA_ENC_DUPLA_H_
 
-
 #define TAM_MAX_TEXTO 80
 
 typedef struct{
@@ -14,6 +13,7 @@ typedef struct{
    float Dinheiro;
    int andaCasa;
    float quantasCasas;
+   int membroDaFamilia;
 } Casa;
 
 typedef Casa InfoCasa;
@@ -48,6 +48,6 @@ int removeInfoListaTabuleiro(ListaEnc2* lista, int matricula);
 
 void IniciaAndaCasas(ListaEnc2* tabuleiro, ListaEncCircularJogador *jogador, int numeroDeCasas);
 
-void imprimeCasaAtual(int num, ListaEnc2* tabuleiro);
+void imprimeCasaAtual(int num, ListaEnc2* tabuleiro)
 
 #endif
