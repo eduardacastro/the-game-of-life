@@ -115,7 +115,7 @@ void IniciaAndaCasas(ListaEnc2* tabuleiro, ListaEncCircularJogador *jogador, int
 	
 	int flag = 0, num = 0;
 	
-	aux->info.posicao =+ numeroDeCasas;
+	aux->info.posicao += numeroDeCasas;
 	num = aux->info.posicao;
 	
 	imprimeCasaAtual(num, tabuleiro);
@@ -143,7 +143,7 @@ void AcaoDaCasa(ListaEnc2 *casa, ListaEncCircularJogador *jogador){
    
   
 	switch(casa->prim->infoCasa.tipoDeCasa){
-		case 1: // casa de profissão
+		case 1: // casa de profissÃ£o
 			jogador->fim->info.salario = casa->prim->infoCasa.Dinheiro;
 			printf("\n\n\n Salario: %d",jogador->fim->info.salario);
 			break;
