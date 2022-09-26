@@ -48,6 +48,6 @@ int removeInfoListaTabuleiro(ListaEnc2* lista, int matricula);
 
 void IniciaAndaCasas(ListaEnc2* tabuleiro, ListaEncCircularJogador *jogador, int numeroDeCasas);
 
-void imprimeCasaAtual(int num, ListaEnc2* tabuleiro)
+void imprimeCasaAtual(int num, ListaEnc2* tabuleiro);
 
 #endif
