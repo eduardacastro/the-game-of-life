@@ -3,7 +3,6 @@
 #ifndef _TABULEIRO_LISTA_ENC_DUPLA_H_
 #define _TABULEIRO_LISTA_ENC_DUPLA_H_
 
-
 #define TAM_MAX_TEXTO 80
 
 typedef struct{
@@ -14,6 +13,7 @@ typedef struct{
    float Dinheiro;
    int andaCasa;
    float quantasCasas;
+   int membroDaFamilia;
 } Casa;
 
 typedef Casa InfoCasa;
