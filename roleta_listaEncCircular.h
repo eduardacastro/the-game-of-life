@@ -1,5 +1,5 @@
 #ifndef _ROLETA_LISTAENCCIRCULAR_H_
-#define _ROLETA_LISTAENCCIRCULA_H_
+#define _ROLETA_LISTAENCCIRCULAR_H_
 
 typedef struct{
    int numero;

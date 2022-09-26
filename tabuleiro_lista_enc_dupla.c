@@ -118,7 +118,9 @@ void IniciaAndaCasas(ListaEnc2* tabuleiro, ListaEncCircularJogador *jogadores, i
 	aux = jogadores->prim;
 
 	int flag = 0, num = 0;
+
 	printf("\ndinheiro antes: %d", aux->info.dinheiro);
+
 
 	printf("\n\n%d | posicao:%d dinheiro: %d familia: %d\n", aux->info.numJogador,
                                                            aux->info.posicao,
@@ -132,11 +134,12 @@ void IniciaAndaCasas(ListaEnc2* tabuleiro, ListaEncCircularJogador *jogadores, i
 	auxtab = buscaInfoListaTabuleiro(tabuleiro, num);
 
 
+
 	int i;
 	//int novoMembroDaFamilia;
 
 	switch(auxtab->infoCasa.tipoDeCasa){
-		case 1: // casa de profissão
+		case 1: // casa de profissï¿½o
 			printf("\n\nentrou no case 1");
 			i = auxtab->infoCasa.Dinheiro;
 			printf("\ndinheiro: %d", i);
@@ -152,6 +155,14 @@ void IniciaAndaCasas(ListaEnc2* tabuleiro, ListaEncCircularJogador *jogadores, i
                                                            aux->info.posicao,
                                                            aux->info.dinheiro,
                                                            aux->info.familia);
+void AcaoDaCasa(ListaEnc2 *casa, ListaEncCircularJogador *jogador){
+   
+  
+	switch(casa->prim->infoCasa.tipoDeCasa){
+		case 1: // casa de profissÃ£o
+			jogador->fim->info.salario = casa->prim->infoCasa.Dinheiro;
+			printf("\n\n\n Salario: %d",jogador->fim->info.salario);
+
 			break;
 		case 2: //Perde Dinheiro/Ganho de Dinheiro
 			aux->info.dinheiro += auxtab->infoCasa.Dinheiro;
