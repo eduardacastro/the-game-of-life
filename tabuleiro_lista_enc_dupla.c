@@ -127,13 +127,13 @@ void IniciaAndaCasas(ListaEnc2* tabuleiro, ListaEncCircularJogador *jogadores, i
 
 	int i, num = 0;
 
-	printf("\ndinheiro antes: %d", aux->info.dinheiro);
+	printf("\ndinheiro antes: %d", aux->info.dinheiro); //apagar
 
 
 	printf("\n\n%d | posicao:%d dinheiro: %d familia: %d\n", aux->info.numJogador,
                                                            aux->info.posicao,
                                                            aux->info.dinheiro,
-                                                           aux->info.familia);
+                                                           aux->info.familia); //apgar
 
 	aux->info.posicao += numeroDeCasas;
 	num = aux->info.posicao;
@@ -159,7 +159,19 @@ void IniciaAndaCasas(ListaEnc2* tabuleiro, ListaEncCircularJogador *jogadores, i
                                                            aux->info.posicao,
                                                            aux->info.dinheiro,
                                                            aux->info.familia);
-			
+            break;
+        case 2:     // Perde Dinheiro/Ganha Dinheiro
+            aux->info.dinheiro += auxtab->infoCasa.Dinheiro;
+            printf("\n\n\n Dinheiro: %d", aux->info.dinheiro);
+            break;
+        case 3: //Dia do Pagamento
+            if(aux->info.salario == 0){
+                aux->info.salario = 16000;
+            }
+            aux->info.dinheiro += aux->info.salario;
+            printf("\n\n\nSalario: %d, Dinheiro: %d", aux->info.salario, aux->info.dinheiro);
+            break;
+            
 	}
 }
 

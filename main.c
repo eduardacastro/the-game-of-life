@@ -81,7 +81,7 @@ int main(){
         break;
     }
 
-    IniciaAndaCasas(tabuleiro, jogador, 3);
+    IniciaAndaCasas(tabuleiro, jogador, 2);
 
 
 //   int opcao;
