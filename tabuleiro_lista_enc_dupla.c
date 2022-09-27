@@ -151,14 +151,21 @@ void IniciaAndaCasas(ListaEnc2* tabuleiro, ListaEncCircularJogador *jogadores, i
 			printf("\n\n\n Salario: %d",aux->info.salario);
 			aux->info.dinheiro += aux->info.salario;
 			printf("\n\n\n Salario: %d\n\nDinheiro: %d",aux->info.salario, aux->info.dinheiro );
-
-//			if( auxtab->infoCasa.andaCasa != 0){
-//				aux->info.posicao += auxtab->infoCasa.quantasCasas;
-//			}
-			printf("\n\n%d | posicao:%d dinheiro: %d familia: %d\n", aux->info.numJogador,
+            
+            if (auxtab->infoCasa.andaCasa != 0){
+                aux->info.posicao += auxtab->infoCasa.quantasCasas;
+                if (auxtab->infoCasa.quantasCasas < 0) {
+                    printf("Voce Retrocedeu %.f Casas", auxtab->infoCasa.quantasCasas);
+                }else{
+                    printf("Voce Avançou %.f Casas", auxtab->infoCasa.quantasCasas);
+                }
+            }
+            
+            printf("\n\n%d | posicao:%d dinheiro: %d familia: %d\n", aux->info.numJogador,
                                                            aux->info.posicao,
                                                            aux->info.dinheiro,
                                                            aux->info.familia);
+            
             break;
         case 2:     // Perde Dinheiro/Ganha Dinheiro
             aux->info.dinheiro += auxtab->infoCasa.Dinheiro;
