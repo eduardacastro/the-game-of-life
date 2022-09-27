@@ -125,7 +125,7 @@ void IniciaAndaCasas(ListaEnc2* tabuleiro, ListaEncCircularJogador *jogadores, i
 
 	aux = jogadores->prim;
 
-	int i, num = 0;
+	int i, num = 0, novoMembroDaFamilia = 0;
 
 	printf("\ndinheiro antes: %d", aux->info.dinheiro); //apagar
 
@@ -170,6 +170,15 @@ void IniciaAndaCasas(ListaEnc2* tabuleiro, ListaEncCircularJogador *jogadores, i
             }
             aux->info.dinheiro += aux->info.salario;
             printf("\n\n\nSalario: %d, Dinheiro: %d", aux->info.salario, aux->info.dinheiro);
+            break;
+        //case 4: //
+        case 5: //Aumentando a familia
+            novoMembroDaFamilia = auxtab->infoCasa.membroDaFamilia;
+            aux->info.familia += novoMembroDaFamilia;
+            printf("\n\n%d | posicao:%d dinheiro: %d familia: %d\n", aux->info.numJogador,
+                                                                   aux->info.posicao,
+                                                                   aux->info.dinheiro,
+                                                                   aux->info.familia);
             break;
             
 	}
