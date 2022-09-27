@@ -155,6 +155,10 @@ void IniciaAndaCasas(ListaEnc2* tabuleiro, ListaEncCircularJogador *jogadores, i
                                                            aux->info.posicao,
                                                            aux->info.dinheiro,
                                                            aux->info.familia);
+			
+	}
+}
+
 void AcaoDaCasa(ListaEnc2 *casa, ListaEncCircularJogador *jogador){
    
   
