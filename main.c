@@ -56,12 +56,12 @@ int main(){
     {
     case 1:
         retorno = insereInicioListaJogador(jogador, info1);
-        imprimeJogador(jogador);
+        //imprimeJogador(jogador);
         break;
     case 2:
         retorno = insereInicioListaJogador(jogador, info2); // retorno = 1
 	    retorno = insereInicioListaJogador(jogador, info1); // retorno = 1
-	    imprimeJogador(jogador);
+	    //imprimeJogador(jogador);
         break;
 //    case 3:
 //    	retorno = insereInicioListaJogador(lista, info3); // retorno = 1
@@ -81,7 +81,7 @@ int main(){
         break;
     }
 
-    IniciaAndaCasas(tabuleiro, jogador, 13);
+    IniciaAndaCasas(tabuleiro, jogador, 3);
 
 
 //   int opcao;

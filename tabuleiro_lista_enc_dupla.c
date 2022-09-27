@@ -1,7 +1,7 @@
 #include "jogador_listaEncCircular.h"
 #include "tabuleiro_lista_enc_dupla.h"
 #include <stdio.h>
-#include <windows.h>
+//#include <windows.h>
 #include <stdlib.h>
 
 // Funcao que cria uma lista
@@ -27,7 +27,7 @@ void iniciaTabuleiro(){
 	InfoCasa infoCasa7 = {7, 1,"ARTISTA! Salario R$ 24.000. Ande mais 6 casas!",0,24000,1, 6};
 	InfoCasa infoCasa8 = {8, 1,"ADVOGADO! Salario R$ 50.000. Ande mais 5 casas!",0,50000, 1, 5};
 	InfoCasa infoCasa9 = {9, 2,"Alugou um Apartamento. Pague R$2000.", 1, -2000, 0,0};
-	InfoCasa info10 = {10, 1,"ENGENHEIRO! Salario de R$ 30.000. Ande mais 3 casas!",0, 30000, 1, 3};
+	InfoCasa infoCasa10 = {10, 1,"ENGENHEIRO! Salario de R$ 30.000. Ande mais 3 casas!",0, 30000, 1, 3};
 	InfoCasa infoCasa11 = {11, 1,"PROFESSOR! Salario de R$ 20.000. Ande mais 2 casas!", 0, 20000, 1, 2};
 	InfoCasa infoCasa12 = {12, 1,"Diploma Universitario! Salario de R$ 16.000. Ande mais 1 casa!", 0, 16000, 1, 1};
 	InfoCasa infoCasa13 = {13, 3,"Dia do Pagamento!", 0, 0, 0, 0};
@@ -37,7 +37,15 @@ void iniciaTabuleiro(){
 	retorno = insereInicioListaTabuleiro(lista, infoCasa3); // retorno = 1
 	retorno = insereInicioListaTabuleiro(lista, infoCasa4); // retorno = 1
 	retorno = insereInicioListaTabuleiro(lista, infoCasa5);
-
+    retorno = insereInicioListaTabuleiro(lista, infoCasa6); // retorno = 1
+    retorno = insereInicioListaTabuleiro(lista, infoCasa7); // retorno = 1
+    retorno = insereInicioListaTabuleiro(lista, infoCasa8); // retorno = 1
+    retorno = insereInicioListaTabuleiro(lista, infoCasa9); // retorno = 1
+    retorno = insereInicioListaTabuleiro(lista, infoCasa10);
+    retorno = insereInicioListaTabuleiro(lista, infoCasa11); // retorno = 1
+    retorno = insereInicioListaTabuleiro(lista, infoCasa12); // retorno = 1
+    retorno = insereInicioListaTabuleiro(lista, infoCasa13); // retorno = 1
+    
 	imprimeListaTabuleiro(lista);
 }
 
@@ -117,7 +125,7 @@ void IniciaAndaCasas(ListaEnc2* tabuleiro, ListaEncCircularJogador *jogadores, i
 
 	aux = jogadores->prim;
 
-	int flag = 0, num = 0;
+	int i, num = 0;
 
 	printf("\ndinheiro antes: %d", aux->info.dinheiro);
 
@@ -130,16 +138,12 @@ void IniciaAndaCasas(ListaEnc2* tabuleiro, ListaEncCircularJogador *jogadores, i
 	aux->info.posicao += numeroDeCasas;
 	num = aux->info.posicao;
 
-	//imprimeCasaAtual(num, tabuleiro);
 	auxtab = buscaInfoListaTabuleiro(tabuleiro, num);
 
-
-
-	int i;
 	//int novoMembroDaFamilia;
 
 	switch(auxtab->infoCasa.tipoDeCasa){
-		case 1: // casa de profiss�o
+		case 1: // casa de profissao
 			printf("\n\nentrou no case 1");
 			i = auxtab->infoCasa.Dinheiro;
 			printf("\ndinheiro: %d", i);
@@ -159,39 +163,7 @@ void IniciaAndaCasas(ListaEnc2* tabuleiro, ListaEncCircularJogador *jogadores, i
 	}
 }
 
-void AcaoDaCasa(ListaEnc2 *casa, ListaEncCircularJogador *jogador){
-   
-  
-	switch(casa->prim->infoCasa.tipoDeCasa){
-		case 1: // casa de profissão
-			jogador->fim->info.salario = casa->prim->infoCasa.Dinheiro;
-			printf("\n\n\n Salario: %d",jogador->fim->info.salario);
 
-			break;
-		case 2: //Perde Dinheiro/Ganho de Dinheiro
-			aux->info.dinheiro += auxtab->infoCasa.Dinheiro;
-			printf("\n\n\n Salario: %d\n\nDinheiro: %d",aux->info.salario, aux->info.dinheiro );
-			break;
-		case 3: //Dia do Pagamento
-			if (aux->info.salario == 0 ){
-				aux->info.salario = 16000;
-			}
-			aux->info.dinheiro += aux->info.salario;
-			printf("\n\n\n Salario: %d\n\nDinheiro: %d",aux->info.salario, aux->info.dinheiro );
-			break;
-		//case 4: //
-
-//		case 5: //Aumentando a familia
-//			novoMembroDaFamilia = auxtab->infoCasa.membroDaFamilia;
-//			aux->info.familia += novoMembroDaFamilia;
-//			break;
-	}
-
-   printf("\n\n%d | posicao:%d dinheiro: %d familia: %d\n", aux->info.numJogador,
-                                                           aux->info.posicao,
-                                                           aux->info.dinheiro,
-                                                           aux->info.familia);
-}
 
 
 void imprimeCasaAtual(int num, ListaEnc2* tabuleiro){
@@ -201,6 +173,5 @@ void imprimeCasaAtual(int num, ListaEnc2* tabuleiro){
 	//system("cls");
 	printf("\nCasa: %d \n\n\t|Texto: %s\n", auxtab->infoCasa.numeroDaCasa, auxtab->infoCasa.textoDaCasa);
 
-    return auxtab;
 }
 

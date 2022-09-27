@@ -47,7 +47,7 @@ int insereInicioListaJogador(ListaEncCircularJogador *jogador, InfoJogador info)
         jogador->prim = novo;
         jogador->fim = novo;
         novo->prox = jogador->prim;
-    return;
+    return 1;
     }
 
     novo->info = info;

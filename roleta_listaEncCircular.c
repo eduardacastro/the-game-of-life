@@ -1,6 +1,7 @@
 #include "roleta_listaEncCircular.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 
 ListaEncCircularRoleta* criaLista(){
    ListaEncCircularRoleta *lista = (ListaEncCircularRoleta*)malloc(sizeof(ListaEncCircularRoleta));
@@ -18,7 +19,7 @@ int insereInicioListaRoleta(ListaEncCircularRoleta *lista, InfoRoleta info){
     	lista->fim = novo;
 	    novo->prox = lista->prim;
 	    //printf("%d\n", novo->info.numero);
-	    return;
+	    return 1;
    }
    
 	novo->info = info;
@@ -30,7 +31,7 @@ int insereInicioListaRoleta(ListaEncCircularRoleta *lista, InfoRoleta info){
 }
 
 int sorteiaNumero(){
-    int i, r;
+    int r;
     srand(time(NULL));
 
     r = rand() % 21;
