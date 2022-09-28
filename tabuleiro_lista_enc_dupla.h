@@ -46,8 +46,12 @@ NodoLEnc2* buscaInfoListaTabuleiro(ListaEnc2* lista, int matricula);
 // Funcao que remove um nodo com uma informacao de uma lista
 int removeInfoListaTabuleiro(ListaEnc2* lista, int matricula);
 
-void IniciaAndaCasas(ListaEnc2* tabuleiro, ListaEncCircularJogador *jogador, int numeroDeCasas);
+void IniciaAndaCasas(ListaEnc2* tabuleiro, NodoLEncCircularJogador *jogador, int numeroDeCasas);
 
 void imprimeCasaAtual(int num, ListaEnc2* tabuleiro);
+
+NodoLEncCircularJogador* diaDoPagamento(NodoLEncCircularJogador *jogador);
+
+NodoLEncCircularJogador* novoMembroDaFamilia(NodoLEncCircularJogador *jogador, int numeroDeMembros);
 
 #endif

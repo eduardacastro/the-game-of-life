@@ -119,14 +119,12 @@ int removeInfoListaTabuleiro(ListaEnc2* lista, int numeroDaCasa){
    return 0; // Nao encontrou
 }
  //(tabuleiro,jogador1,8)
-void IniciaAndaCasas(ListaEnc2* tabuleiro, ListaEncCircularJogador *jogadores, int numeroDeCasas){
+void IniciaAndaCasas(ListaEnc2* tabuleiro, NodoLEncCircularJogador *jogador, int numeroDeCasas){
 	NodoLEncCircularJogador *aux ;
 	NodoLEnc2 *auxtab;
 
-	aux = jogadores->prim;
-
 	int i, num = 0, novoMembroDaFamilia = 0;
-
+    aux = jogador;
 	printf("\ndinheiro antes: %d", aux->info.dinheiro); //apagar
 
 
@@ -135,22 +133,15 @@ void IniciaAndaCasas(ListaEnc2* tabuleiro, ListaEncCircularJogador *jogadores, i
                                                            aux->info.dinheiro,
                                                            aux->info.familia); //apgar
 
-	aux->info.posicao += numeroDeCasas;
+	aux->info.posicao += numeroDeCasas;                 //Salva a posicao atual do jogador
 	num = aux->info.posicao;
+	auxtab = buscaInfoListaTabuleiro(tabuleiro, num);   //Busca no tabuleiro a posicao atual
 
-	auxtab = buscaInfoListaTabuleiro(tabuleiro, num);
-
-	//int novoMembroDaFamilia;
-
-	switch(auxtab->infoCasa.tipoDeCasa){
+	switch(auxtab->infoCasa.tipoDeCasa){                //
 		case 1: // casa de profissao
-			printf("\n\nentrou no case 1");
 			i = auxtab->infoCasa.Dinheiro;
-			printf("\ndinheiro: %d", i);
 			aux->info.salario = i;
-			printf("\n\n\n Salario: %d",aux->info.salario);
 			aux->info.dinheiro += aux->info.salario;
-			printf("\n\n\n Salario: %d\n\nDinheiro: %d",aux->info.salario, aux->info.dinheiro );
             
             if (auxtab->infoCasa.andaCasa != 0){
                 aux->info.posicao += auxtab->infoCasa.quantasCasas;
@@ -160,38 +151,34 @@ void IniciaAndaCasas(ListaEnc2* tabuleiro, ListaEncCircularJogador *jogadores, i
                     printf("Voce Avançou %.f Casas", auxtab->infoCasa.quantasCasas);
                 }
             }
-            
-            printf("\n\n%d | posicao:%d dinheiro: %d familia: %d\n", aux->info.numJogador,
-                                                           aux->info.posicao,
-                                                           aux->info.dinheiro,
-                                                           aux->info.familia);
-            
             break;
+            
         case 2:     // Perde Dinheiro/Ganha Dinheiro
             aux->info.dinheiro += auxtab->infoCasa.Dinheiro;
             printf("\n\n\n Dinheiro: %d", aux->info.dinheiro);
             break;
+            
         case 3: //Dia do Pagamento
             if(aux->info.salario == 0){
                 aux->info.salario = 16000;
             }
-            aux->info.dinheiro += aux->info.salario;
-            printf("\n\n\nSalario: %d, Dinheiro: %d", aux->info.salario, aux->info.dinheiro);
+            aux = diaDoPagamento(aux);
             break;
-        //case 4: //
+            
         case 5: //Aumentando a familia
             novoMembroDaFamilia = auxtab->infoCasa.membroDaFamilia;
             aux->info.familia += novoMembroDaFamilia;
-            printf("\n\n%d | posicao:%d dinheiro: %d familia: %d\n", aux->info.numJogador,
-                                                                   aux->info.posicao,
-                                                                   aux->info.dinheiro,
-                                                                   aux->info.familia);
             break;
-            
 	}
 }
 
 
+NodoLEncCircularJogador* diaDoPagamento(NodoLEncCircularJogador *jogador){
+    
+    jogador->info.dinheiro += jogador->info.salario;
+    return jogador;
+
+}
 
 
 void imprimeCasaAtual(int num, ListaEnc2* tabuleiro){
