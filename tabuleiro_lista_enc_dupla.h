@@ -41,7 +41,7 @@ void imprimeListaTabuleiro(ListaEnc2 *lista);
 int insereInicioListaTabuleiro(ListaEnc2 *lista, InfoCasa infoCasa);
 
 // Funcao que resgata um nodo com uma informacao de uma lista
-NodoLEnc2* buscaInfoListaTabuleiro(ListaEnc2* lista, int matricula);
+NodoLEnc2* buscaInfoListaTabuleiro(ListaEnc2* lista, int numeroDaCasa);
 
 // Funcao que remove um nodo com uma informacao de uma lista
 int removeInfoListaTabuleiro(ListaEnc2* lista, int matricula);

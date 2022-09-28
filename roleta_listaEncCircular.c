@@ -38,7 +38,7 @@ int sorteiaNumero(){
     if (r == 0){
         r++;
     }
-    printf("%d\n\n", r);
+    // printf("%d\n\n", r);   //print para veridicar o num aleatorio
     return r;
 }
 
@@ -48,16 +48,15 @@ NodoLEncCircularRoleta* buscaInfoListaRoleta(ListaEncCircularRoleta* lista, int 
    int i = 0;
    aux = lista->prim;
    for(i = 1; i <= num; i++){
-		printf("%d\n", i);
-		printf("num %d \n", aux->info.numero);
-        	aux = aux->prox;
+        aux = aux->prox;
+       //        printf("%d\n", i);
+       //        printf("num %d \n", aux->info.numero);  // prints para veridicar se a roleta esta funcionando
    }
-  
-   return NULL; 
+    return aux;
 }
 
-void iniciaRoleta(){
-	int retorno, sorteioDeNumero;
+ListaEncCircularRoleta* iniciaRoleta(){
+	int retorno;
 	ListaEncCircularRoleta *lista;
 	lista = criaLista();
    
@@ -66,18 +65,32 @@ void iniciaRoleta(){
 	InfoRoleta info3 = {3};
 	InfoRoleta info4 = {4};
 	InfoRoleta info5 = {5};
+    InfoRoleta info6 = {6};
+    InfoRoleta info7 = {7};
+    InfoRoleta info8 = {8};
+    InfoRoleta info9 = {9};
+    InfoRoleta info10 = {10};
 	
+    retorno = insereInicioListaRoleta(lista, info10); // retorno = 1
+    retorno = insereInicioListaRoleta(lista, info9); // retorno = 1
+    retorno = insereInicioListaRoleta(lista, info8); // retorno = 1
+    retorno = insereInicioListaRoleta(lista, info7); // retorno = 1
+    retorno = insereInicioListaRoleta(lista, info6);
 	retorno = insereInicioListaRoleta(lista, info5); // retorno = 1
 	retorno = insereInicioListaRoleta(lista, info4); // retorno = 1
 	retorno = insereInicioListaRoleta(lista, info3); // retorno = 1
     retorno = insereInicioListaRoleta(lista, info2); // retorno = 1
 	retorno = insereInicioListaRoleta(lista, info1); // retorno = 1
 
-	//rodaRoleta(lista); 
+    return lista;
 }
 
-void rodaRoleta(ListaEncCircularRoleta *lista){
-	buscaInfoListaRoleta(lista, sorteiaNumero());
+NodoLEncCircularRoleta* rodaRoleta(ListaEncCircularRoleta *lista){
+	
+    NodoLEncCircularRoleta *aux;
+    
+    aux = buscaInfoListaRoleta(lista, sorteiaNumero());
+    return  aux;
 }
 
 

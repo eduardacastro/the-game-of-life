@@ -13,7 +13,7 @@ int main(){
 
    	// Aqui seriam chamadas as funcoes de inicializacao de nodos
    	InfoCasa infoCasa1 = {1, 2,"Raspou o carro no estacionamento. Pague R$1000.", 1, -1000, 0,0,0};
-	InfoCasa infoCasa2 = {2, 2,"Inicio das aulas. Pague a matricula R$5000.", 1, -5000, 0,0,0};
+	InfoCasa infoCasa2 = {2, 3,"Dia do Pagamento!", 1, -5000, 0,0,0};
 	InfoCasa infoCasa3 = {3, 1,"Voce se tornou YouTuber! Salario de R$ 30000. Ande mais 10 casas.",0,30000,1, 10,0};
 	InfoCasa infoCasa4 = {4, 2,"Entrou na Faculdade. Ganhe R$2000.", 1, 2000, 0,0,0};
 	InfoCasa infoCasa5 = {5, 2,"Comprou um computador novo para a faculdade. Pague R$2000.", 1, 2000, 0,0,0};
@@ -41,91 +41,47 @@ int main(){
     retorno = insereInicioListaTabuleiro(tabuleiro, infoCasa13);
 
     int  numJogadores;
-	ListaEncCircularJogador *jogador;
-	jogador = criaJogador();
+	ListaEncCircularJogador *jogadores;
+	jogadores = criaJogador();
 
 	InfoJogador info1 = {1,0,0,10000,1};
 	InfoJogador info2 = {2,0,0,10000,1};
-	InfoJogador info3 = {3,0,0,10000,1};
-	InfoJogador info4 = {4,0,0,10000,1};
 
-    printf("Quantos jogadores iram jogar?");
-    scanf("%d", &numJogadores);
+    printf("Quantos jogadores iram jogar?"); //apagar
+    scanf("%d", &numJogadores); //apagar
 
-    switch (numJogadores)
+    switch (numJogadores) //apagar 
     {
     case 1:
-        retorno = insereInicioListaJogador(jogador, info1);
+        retorno = insereInicioListaJogador(jogadores, info1);
         //imprimeJogador(jogador);
-        break;
-    case 2:
-        retorno = insereInicioListaJogador(jogador, info2); // retorno = 1
-	    retorno = insereInicioListaJogador(jogador, info1); // retorno = 1
+	    //retorno = insereInicioListaJogador(jogadores, info1); // retorno = 1
 	    //imprimeJogador(jogador);
         break;
-//    case 3:
-//    	retorno = insereInicioListaJogador(lista, info3); // retorno = 1
-//        retorno = insereInicioListaJogador(lista, info2); // retorno = 1
-//        retorno = insereInicioListaJogador(lista, info1); // retorno = 1
-//        imprimeJogador(lista);
-//        break;
-//    case 4:
-//        retorno = insereInicioListaJogador(lista, info4); // retorno = 1
-//        retorno = insereInicioListaJogador(lista, info3); // retorno = 1
-//        retorno = insereInicioListaJogador(lista, info2); // retorno = 1
-//        retorno = insereInicioListaJogador(lista, info1); // retorno = 1
-//        imprimeJogador(lista);
-//        break;
     default:
         printf("\n\n\t\tVoce deve escolher um numero de jogadores entre 1 e 4!\n");
         break;
     }
+    ListaEncCircularRoleta* roleta;
+    NodoLEncCircularRoleta* numSorteado;
+    
+    roleta = iniciaRoleta();
+    
+    NodoLEncCircularJogador *jogador;
+    
+    jogador = jogadores->prim;
+    
+    //do{
+        //system("cls");
+        numSorteado = rodaRoleta(roleta);
+        printf("\n\n\n Numero Sorteado: %d\n\n", numSorteado->info.numero);
+        
+        
+      
+        jogador = jogador->prox;
 
-    IniciaAndaCasas(tabuleiro, jogador, 3);
+   //}while(jogador->info.posicao != 80);
 
-
-//   int opcao;
-//
-//    do{
-//        system("cls");
-//
-//        imprimeRoleta();
-//        imprimeSlogan();
-//        adicionaCasasNoTabuleiro();
-//
-//        printf("----- MENU -----\n");
-//        printf("1 - Inicie o Jogo \n");
-//        printf("2 - Regras \n");
-//        printf("3 - Sair \n");
-//        printf("----- ---- -----\n");
-//        printf("Informe uma opcao: ");
-//        scanf("%d", &opcao);
-//      switch(opcao){
-//         case 1:
-//            printf("Iniciar Jogo \n");
-//            //votosInvalidos += votar(votos, numeros);	//recebe se há votos inválidos
-//            break;
-//         case 2:
-//            printf("Numeros e Partidos \n");
-//            //imprimirPartidos(partidos, numeros);
-//            //system("pause");
-//            break;
-//         case 3:
-//            printf("Votos Validos e Invalidos \n");
-//			//imprimirNumeroDeVotos(votos,votosInvalidos);
-//            //system("pause");
-//            break;
-//         case 4:
-//            printf("Encerrar Votacao \n");
-//            //naoEmpate = vencedor(votos, &idxVencedor, &percentual); //recebe se a empate ou nao
-//            break;
-//         default:
-//            printf("Opcao invalida!");
-//            //system("pause");
-//      }
-//
-//   }while(opcao != 4);
-//
 
    return 0;
 }
