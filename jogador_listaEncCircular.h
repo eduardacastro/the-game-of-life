@@ -28,7 +28,7 @@ ListaEncCircularJogador* criaJogador();
 void destroiListaCircularJogador(ListaEncCircularJogador *lista);
 
 // Funcao que imprime todos os nodos de uma lista
-void imprimeListaDeJogadores(ListaEncCircularJogador *lista);
+void imprimeJogador(ListaEncCircularJogador *jogadores);
 
 // Funcao que insere um nodo no inicio de uma lista
 int insereInicioListaJogador(ListaEncCircularJogador *lista, InfoJogador info);

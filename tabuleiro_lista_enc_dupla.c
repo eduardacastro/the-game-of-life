@@ -137,8 +137,10 @@ void IniciaAndaCasas(ListaEnc2* tabuleiro, NodoLEncCircularJogador *jogador, int
     num = aux->info.posicao;
     auxtab = buscaInfoListaTabuleiro(tabuleiro, num);   //Busca no tabuleiro a posicao atual
 
-    switch(auxtab->infoCasa.tipoDeCasa){                //
-        case 1: // casa de profissao
+    imprimeCasaAtual(num, tabuleiro);
+    
+    switch(auxtab->infoCasa.tipoDeCasa){
+        case 1:                                 // casa de profissao
             i = auxtab->infoCasa.Dinheiro;
             aux->info.salario = i;
             aux->info.dinheiro += aux->info.salario;
@@ -153,7 +155,7 @@ void IniciaAndaCasas(ListaEnc2* tabuleiro, NodoLEncCircularJogador *jogador, int
             }
             break;
             
-        case 2:     // Perde Dinheiro/Ganha Dinheiro
+        case 2:                                 // Perde Dinheiro/Ganha Dinheiro
             aux->info.dinheiro += auxtab->infoCasa.Dinheiro;
             printf("\n\n\n Dinheiro: %d", aux->info.dinheiro);
             break;
@@ -162,7 +164,12 @@ void IniciaAndaCasas(ListaEnc2* tabuleiro, NodoLEncCircularJogador *jogador, int
             if(aux->info.salario == 0){
                 aux->info.salario = 16000;
             }
-            aux = diaDoPagamento(aux);
+            diaDoPagamento(aux);
+            
+            printf("\n\n%d | posicao:%d dinheiro: %d familia: %d\n", aux->info.numJogador,
+                                                                   aux->info.posicao,
+                                                                   aux->info.dinheiro,
+                                                                   aux->info.familia);
             break;
             
         case 5: //Aumentando a familia
@@ -173,20 +180,18 @@ void IniciaAndaCasas(ListaEnc2* tabuleiro, NodoLEncCircularJogador *jogador, int
 }
 
 
-NodoLEncCircularJogador* diaDoPagamento(NodoLEncCircularJogador *jogador){
+void diaDoPagamento(NodoLEncCircularJogador *jogador){
     
     jogador->info.dinheiro += jogador->info.salario;
-    return jogador;
 
 }
-
 
 void imprimeCasaAtual(int num, ListaEnc2* tabuleiro){
     NodoLEnc2 *auxtab;
     auxtab = buscaInfoListaTabuleiro(tabuleiro, num);
 
     //system("cls");
-    printf("\nCasa: %d \n\n\t|Texto: %s\n", auxtab->infoCasa.numeroDaCasa, auxtab->infoCasa.textoDaCasa);
+    printf("\n\t\t|Casa: %d |\n\n\t\t| %s |\n", auxtab->infoCasa.numeroDaCasa, auxtab->infoCasa.textoDaCasa);
 
 }
 

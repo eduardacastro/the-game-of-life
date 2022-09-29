@@ -53,9 +53,10 @@ int main(){
     switch (numJogadores) //apagar 
     {
     case 1:
+        retorno = insereInicioListaJogador(jogadores, info2);
         retorno = insereInicioListaJogador(jogadores, info1);
         //imprimeJogador(jogador);
-	    //retorno = insereInicioListaJogador(jogadores, info1); // retorno = 1
+	     // retorno = 1
 	    //imprimeJogador(jogador);
         break;
     default:
@@ -74,12 +75,15 @@ int main(){
     //do{
         //system("cls");
         numSorteado = rodaRoleta(roleta);
-        printf("\n\n\n Numero Sorteado: %d\n\n", numSorteado->info.numero);
+        printf("\n\n\n\tJogador %d\n\n", jogador->info.numJogador);
+        printf("\tNumero Sorteado: %d\n\n", numSorteado->info.numero);
+    
         
-        
+    IniciaAndaCasas(tabuleiro,jogador, numSorteado->info.numero);
       
         jogador = jogador->prox;
-
+        
+    imprimeJogador(jogadores);
    //}while(jogador->info.posicao != 80);
 
 

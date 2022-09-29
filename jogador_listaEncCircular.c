@@ -21,20 +21,20 @@ void destroiListaCircularJogador(ListaEncCircularJogador *lista){
 }
 
 // Funcao que imprime todos os nodos de uma lista
-void imprimeJogador(ListaEncCircularJogador *jogador){
+void imprimeJogador(ListaEncCircularJogador *jogadores){
     NodoLEncCircularJogador *aux;
 	int flag = 0;
-    printf("-----------------------------------------\n");
+    printf("\n\t-----------------------------------------\n");
    
-   	for(aux = jogador->prim; flag != 1; aux = aux->prox){
-   	      	printf("%d | posicao:%d dinheiro: %d familia: %d\n", aux->info.numJogador,
+   	for(aux = jogadores->prim; flag != 1; aux = aux->prox){
+   	      	printf("\t%d | posicao:%d dinheiro: %d familia: %d\n", aux->info.numJogador,
                                                            aux->info.posicao,
                                                            aux->info.dinheiro,
                                                            aux->info.familia);
-    	if(aux == jogador->fim){
+    	if(aux == jogadores->fim){
     		flag++;
 		}
-   		printf("-----------------------------------------\n");
+   		printf("\t-----------------------------------------\n");
    }
 }
 
@@ -97,8 +97,6 @@ void iniciaJogador(){
        
 	InfoJogador info1 = {1,0,10000,1};
 	InfoJogador info2 = {2,0,10000,1};
-	InfoJogador info3 = {3,0,10000,1};
-	InfoJogador info4 = {4,0,10000,1};
 
     printf("Quantos jogadores iram jogar?");
     scanf("%d", &numJogadores);
@@ -113,19 +111,6 @@ void iniciaJogador(){
         retorno = insereInicioListaJogador(lista, info2); // retorno = 1
 	    retorno = insereInicioListaJogador(lista, info1); // retorno = 1
 	    imprimeJogador(lista);
-        break;
-    case 3:
-    	retorno = insereInicioListaJogador(lista, info3); // retorno = 1
-        retorno = insereInicioListaJogador(lista, info2); // retorno = 1
-        retorno = insereInicioListaJogador(lista, info1); // retorno = 1
-        imprimeJogador(lista);
-        break;
-    case 4:
-        retorno = insereInicioListaJogador(lista, info4); // retorno = 1
-        retorno = insereInicioListaJogador(lista, info3); // retorno = 1
-        retorno = insereInicioListaJogador(lista, info2); // retorno = 1
-        retorno = insereInicioListaJogador(lista, info1); // retorno = 1
-        imprimeJogador(lista);
         break;
     default:
         printf("\n\n\t\tVoce deve escolher um numero de jogadores entre 1 e 4!\n");

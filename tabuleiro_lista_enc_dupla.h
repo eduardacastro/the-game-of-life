@@ -50,7 +50,7 @@ void IniciaAndaCasas(ListaEnc2* tabuleiro, NodoLEncCircularJogador *jogador, int
 
 void imprimeCasaAtual(int num, ListaEnc2* tabuleiro);
 
-NodoLEncCircularJogador* diaDoPagamento(NodoLEncCircularJogador *jogador);
+void diaDoPagamento(NodoLEncCircularJogador *jogador);
 
 NodoLEncCircularJogador* novoMembroDaFamilia(NodoLEncCircularJogador *jogador, int numeroDeMembros);
 
