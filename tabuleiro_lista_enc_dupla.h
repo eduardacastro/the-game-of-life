@@ -46,12 +46,22 @@ NodoLEnc2* buscaInfoListaTabuleiro(ListaEnc2* lista, int numeroDaCasa);
 // Funcao que remove um nodo com uma informacao de uma lista
 int removeInfoListaTabuleiro(ListaEnc2* lista, int matricula);
 
-void IniciaAndaCasas(ListaEnc2* tabuleiro, NodoLEncCircularJogador *jogador, int numeroDeCasas);
+void imprimeCasaAtual(int num, ListaEnc2* tabuleiro, NodoLEncCircularJogador *jogador);
 
-void imprimeCasaAtual(int num, ListaEnc2* tabuleiro);
+void andarCasas(ListaEnc2* tabuleiro, NodoLEncCircularJogador *jogador, int numeroDeCasas, ListaEncCircularRoleta* roleta);
 
-void diaDoPagamento(NodoLEncCircularJogador *jogador);
+int buscaInfoListaFinalTabuleiro(ListaEnc2* tabuleiro, NodoLEncCircularJogador *jogador, int numInicial);
+
+NodoLEnc2* buscaInfoListaInicialTabuleiro(ListaEnc2* lista, NodoLEncCircularJogador *jogador, int casaInicial);
 
 NodoLEncCircularJogador* novoMembroDaFamilia(NodoLEncCircularJogador *jogador, int numeroDeMembros);
+
+int existeDiaDoPagamentoEntreAsCasas(ListaEnc2* lista, NodoLEncCircularJogador *jogador, int inicioCasa, int fimCasa);
+
+void diaDoPagamento(NodoLEncCircularJogador *jogador, int numeroDeCasasDeDiaDoPagamento);
+
+int fimDeJogoPorDinheiro(NodoLEncCircularJogador *jogador);
+
+int fimDeJogoPorPosicao(ListaEncCircularJogador* listaDeJogadores, NodoLEncCircularJogador *jogador);
 
 #endif
