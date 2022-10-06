@@ -40,4 +40,9 @@ ListaEncCircularRoleta* iniciaRoleta();
 int sorteiaNumero();
 
 NodoLEncCircularRoleta* rodaRoleta(ListaEncCircularRoleta *lista);
+
+void giraRoleta (ListaEncCircularRoleta *roleta);
+
+void delay(int ms);
+
 #endif

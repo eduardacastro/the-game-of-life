@@ -12,14 +12,13 @@ ListaEnc2* criaListaTabuleiro(){
    return lista;
 }
 
-
-void iniciaTabuleiro(){
+ListaEnc2* iniciaTabuleiro(){
     int retorno;
        ListaEnc2 *lista;
        lista = criaListaTabuleiro();
 
        // Aqui seriam chamadas as funcoes de inicializacao de nodos
-       InfoCasa infoCasa1 = {1, 2,"Raspou o carro no estacionamento. Pague R$1000.", 1, -1000, 0,0};
+    InfoCasa infoCasa1 = {1, 2,"Raspou o carro no estacionamento. Pague R$1000.", 1, -1000, 0,0};
     InfoCasa infoCasa2 = {2, 2,"Inicio das aulas. Pague a matricula R$5000.", 1, -5000, 0,0};
     InfoCasa infoCasa3 = {3, 1,"Voce se tornou YouTuber! Salario de R$ 30000. Ande mais 10 casas.",0,30000,1, 10};
     InfoCasa infoCasa4 = {4, 2,"Entrou na Faculdade. Ganhe R$2000.", 1, 2000, 0,0};
@@ -48,7 +47,8 @@ void iniciaTabuleiro(){
     retorno = insereInicioListaTabuleiro(lista, infoCasa2); // retorno = 1
     retorno = insereInicioListaTabuleiro(lista, infoCasa1);
     
-    imprimeListaTabuleiro(lista);
+    return  lista;
+    
 }
 
 // Funcao que destroi uma lista
@@ -70,7 +70,6 @@ void imprimeListaTabuleiro(ListaEnc2 *lista){
       printf("%d | tipo: %d Texto: %s (%d) Dinheiro: %.f %d %.f membroDaFamilia: %d\n", aux->infoCasa.numeroDaCasa,
                                aux->infoCasa.tipoDeCasa,
                                aux->infoCasa.textoDaCasa,
-                               aux->infoCasa.ganhaPerdeDinheiro,
                                aux->infoCasa.Dinheiro,
                                aux->infoCasa.andaCasa,
                                aux->infoCasa.quantasCasas,
@@ -98,7 +97,6 @@ NodoLEnc2* buscaInfoListaInicialTabuleiro(ListaEnc2* lista, NodoLEncCircularJoga
     printf("Primeiro: %d | tipo: %d Texto: %s (%d) Dinheiro: %.f %d %.f membroDaFamilia: %d\n\n\n", aux->infoCasa.numeroDaCasa,
                                  aux->infoCasa.tipoDeCasa,
                                  aux->infoCasa.textoDaCasa,
-                                 aux->infoCasa.ganhaPerdeDinheiro,
                                  aux->infoCasa.Dinheiro,
                                  aux->infoCasa.andaCasa,
                                  aux->infoCasa.quantasCasas,
@@ -111,8 +109,6 @@ NodoLEnc2* buscaInfoListaInicialTabuleiro(ListaEnc2* lista, NodoLEncCircularJoga
            printf("\n%d | tipo: %d Texto: %s (%d) Dinheiro: %.f %d %.f membroDaFamilia: %d\n\n\n", aux->infoCasa.numeroDaCasa,
                                         aux->infoCasa.tipoDeCasa,
                                         aux->infoCasa.textoDaCasa,
-                                        aux->infoCasa.ganhaPerdeDinheiro,
-                                        aux->infoCasa.Dinheiro,
                                         aux->infoCasa.andaCasa,
                                         aux->infoCasa.quantasCasas,
                                         aux->infoCasa.membroDaFamilia);

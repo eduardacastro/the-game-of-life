@@ -90,36 +90,18 @@ int removeInfoListaJogador(ListaEncCircularJogador* jogador, int numJogador){
     return 0; // Nao encontrou
 }
 
-void iniciaJogador(){
-	int retorno, numJogadores;
+ListaEncCircularJogador* iniciaJogadores(){
+	int retorno;
 	ListaEncCircularJogador *lista;
 	lista = criaJogador();
        
 	InfoJogador info1 = {1,0,10000,1};
 	InfoJogador info2 = {2,0,10000,1};
-
-    printf("Quantos jogadores iram jogar?");
-    scanf("%d", &numJogadores);
 	
-    switch (numJogadores)
-    {
-    case 1:
-        retorno = insereInicioListaJogador(lista, info1);
-        imprimeJogador(lista);
-        break;
-    case 2:
-        retorno = insereInicioListaJogador(lista, info2); // retorno = 1
-	    retorno = insereInicioListaJogador(lista, info1); // retorno = 1
-	    imprimeJogador(lista);
-        break;
-    default:
-        printf("\n\n\t\tVoce deve escolher um numero de jogadores entre 1 e 4!\n");
-        break;
-    }
-	
-}
-
-void fimRoleta(){
-	//destroiLista(lista);
+    retorno = insereInicioListaJogador(lista, info2); // retorno = 1
+	retorno = insereInicioListaJogador(lista, info1); // retorno = 1
+    imprimeJogador(lista);
+    
+    return lista;
 }
 

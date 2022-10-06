@@ -9,7 +9,6 @@ typedef struct{
    int numeroDaCasa;
    int tipoDeCasa;
    char textoDaCasa[TAM_MAX_TEXTO];
-   int ganhaPerdeDinheiro;
    float Dinheiro;
    int andaCasa;
    float quantasCasas;
@@ -61,6 +60,8 @@ int existeDiaDoPagamentoEntreAsCasas(ListaEnc2* lista, NodoLEncCircularJogador *
 void diaDoPagamento(NodoLEncCircularJogador *jogador, int numeroDeCasasDeDiaDoPagamento);
 
 int fimDeJogoPorDinheiro(NodoLEncCircularJogador *jogador);
+
+ListaEnc2* iniciaTabuleiro();
 
 int fimDeJogoPorPosicao(ListaEncCircularJogador* listaDeJogadores, NodoLEncCircularJogador *jogador);
 

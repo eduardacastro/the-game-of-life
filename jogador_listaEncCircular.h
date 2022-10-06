@@ -39,4 +39,6 @@ NodoLEncCircularJogador* buscaInfoListaJogador(ListaEncCircularJogador* lista, i
 // Funcao que remove um nodo com uma informacao de uma lista
 int removeInfoListaJogador(ListaEncCircularJogador* lista, int numJogador);
 
+ListaEncCircularJogador* iniciaJogadores();
+
 #endif

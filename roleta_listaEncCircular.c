@@ -135,6 +135,53 @@ int removeInfoListaRoleta(ListaEncCircularRoleta* lista, int numero){
 }
 
 
+// Função para dar um delay entre os prints da roleta
+void delay(int ms)
+{
+    int tempo;
+    tempo = clock();
+
+    while (clock() < tempo+ms);
+}
+
+
+//função que gira a roleta (ta com O(n2), mas ficou legal visualmente)
+void giraRoleta (ListaEncCircularRoleta *roleta)
+{
+ int aleat;
+ int i=0;
+
+ aleat=rand()%8+15;
+ i=aleat;
+
+ while(aleat >0){
+    delay (10*i); //quanto maior o argumento, maior o delay
+    system("cls");
+    i=i+2; //i vai aumentando pra deixar a roleta mais devagar
+    aleat--;
+
+roleta->prim = roleta->prim->prox;
+
+    printf("        \\/\n");
+    printf("        %d\n", roleta->prim->info);
+    printf("     %d     %d\n",roleta->prim->prox->prox->prox->prox->prox->prox->prox->prox->prox->info,roleta->prim->prox->info);
+    printf("    %d       %d\n",roleta->prim->prox->prox->prox->prox->prox->prox->prox->prox->info,roleta->prim->prox->prox->info);
+    printf("    %d       %d\n",roleta->prim->prox->prox->prox->prox->prox->prox->prox->info,roleta->prim->prox->prox->prox->info);
+    printf("     %d     %d\n",roleta->prim->prox->prox->prox->prox->prox->prox->info,roleta->prim->prox->prox->prox->prox->info);
+    printf("        %d\n",roleta->prim->prox->prox->prox->prox->prox->info);
+ }
+
+
+ //aqui tem um print e um pause só pra testar se tá tudo funcionando mesmo, podemos tirar
+
+printf("\n \n \n \n O numero sorteado foi %d! \n \n \n \n", roleta->prim->info);
+system("pause");
+system("cls");
+}
+
+
+
+
 //void fimRoleta(){
 //	//destroiLista(lista);
 //}
