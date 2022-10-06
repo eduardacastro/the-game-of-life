@@ -35,10 +35,14 @@ NodoLEncCircularRoleta* buscaInfoListaRoleta(ListaEncCircularRoleta* lista, int 
 // Funcao que remove um nodo com uma informacao de uma lista
 int removeInfoListaRoleta(ListaEncCircularRoleta* lista, int numero);
 
-void iniciaRoleta();
+ListaEncCircularRoleta* iniciaRoleta();
 
 int sorteiaNumero();
 
-void rodaRoleta(ListaEncCircularRoleta *lista);
+NodoLEncCircularRoleta* rodaRoleta(ListaEncCircularRoleta *lista);
+
+void giraRoleta (ListaEncCircularRoleta *roleta);
+
+void delay(int ms);
 
 #endif

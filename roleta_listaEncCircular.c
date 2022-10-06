@@ -1,6 +1,7 @@
 #include "roleta_listaEncCircular.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 
 ListaEncCircularRoleta* criaLista(){
    ListaEncCircularRoleta *lista = (ListaEncCircularRoleta*)malloc(sizeof(ListaEncCircularRoleta));
@@ -18,7 +19,7 @@ int insereInicioListaRoleta(ListaEncCircularRoleta *lista, InfoRoleta info){
     	lista->fim = novo;
 	    novo->prox = lista->prim;
 	    //printf("%d\n", novo->info.numero);
-	    return;
+	    return 1;
    }
    
 	novo->info = info;
@@ -30,14 +31,14 @@ int insereInicioListaRoleta(ListaEncCircularRoleta *lista, InfoRoleta info){
 }
 
 int sorteiaNumero(){
-    int i, r;
+    int r;
     srand(time(NULL));
 
     r = rand() % 21;
     if (r == 0){
         r++;
     }
-    printf("%d\n\n", r);
+    // printf("%d\n\n", r);   //print para veridicar o num aleatorio
     return r;
 }
 
@@ -47,16 +48,15 @@ NodoLEncCircularRoleta* buscaInfoListaRoleta(ListaEncCircularRoleta* lista, int 
    int i = 0;
    aux = lista->prim;
    for(i = 1; i <= num; i++){
-		printf("%d\n", i);
-		printf("num %d \n", aux->info.numero);
-        	aux = aux->prox;
+        aux = aux->prox;
+       //        printf("%d\n", i);
+       //        printf("num %d \n", aux->info.numero);  // prints para veridicar se a roleta esta funcionando
    }
-  
-   return NULL; 
+    return aux;
 }
 
-void iniciaRoleta(){
-	int retorno, sorteioDeNumero;
+ListaEncCircularRoleta* iniciaRoleta(){
+	int retorno;
 	ListaEncCircularRoleta *lista;
 	lista = criaLista();
    
@@ -65,18 +65,32 @@ void iniciaRoleta(){
 	InfoRoleta info3 = {3};
 	InfoRoleta info4 = {4};
 	InfoRoleta info5 = {5};
+    InfoRoleta info6 = {6};
+    InfoRoleta info7 = {7};
+    InfoRoleta info8 = {8};
+    InfoRoleta info9 = {9};
+    InfoRoleta info10 = {10};
 	
+    retorno = insereInicioListaRoleta(lista, info10); // retorno = 1
+    retorno = insereInicioListaRoleta(lista, info9); // retorno = 1
+    retorno = insereInicioListaRoleta(lista, info8); // retorno = 1
+    retorno = insereInicioListaRoleta(lista, info7); // retorno = 1
+    retorno = insereInicioListaRoleta(lista, info6);
 	retorno = insereInicioListaRoleta(lista, info5); // retorno = 1
 	retorno = insereInicioListaRoleta(lista, info4); // retorno = 1
 	retorno = insereInicioListaRoleta(lista, info3); // retorno = 1
     retorno = insereInicioListaRoleta(lista, info2); // retorno = 1
 	retorno = insereInicioListaRoleta(lista, info1); // retorno = 1
 
-	//rodaRoleta(lista); 
+    return lista;
 }
 
-void rodaRoleta(ListaEncCircularRoleta *lista){
-	buscaInfoListaRoleta(lista, sorteiaNumero());
+NodoLEncCircularRoleta* rodaRoleta(ListaEncCircularRoleta *lista){
+	
+    NodoLEncCircularRoleta *aux;
+    
+    aux = buscaInfoListaRoleta(lista, sorteiaNumero());
+    return  aux;
 }
 
 
@@ -119,6 +133,53 @@ int removeInfoListaRoleta(ListaEncCircularRoleta* lista, int numero){
    }
    return 0; // Nao encontrou
 }
+
+
+// Função para dar um delay entre os prints da roleta
+void delay(int ms)
+{
+    int tempo;
+    tempo = clock();
+
+    while (clock() < tempo+ms);
+}
+
+
+//função que gira a roleta (ta com O(n2), mas ficou legal visualmente)
+void giraRoleta (ListaEncCircularRoleta *roleta)
+{
+ int aleat;
+ int i=0;
+
+ aleat=rand()%8+15;
+ i=aleat;
+
+ while(aleat >0){
+    delay (10*i); //quanto maior o argumento, maior o delay
+    system("cls");
+    i=i+2; //i vai aumentando pra deixar a roleta mais devagar
+    aleat--;
+
+roleta->prim = roleta->prim->prox;
+
+    printf("        \\/\n");
+    printf("        %d\n", roleta->prim->info);
+    printf("     %d     %d\n",roleta->prim->prox->prox->prox->prox->prox->prox->prox->prox->prox->info,roleta->prim->prox->info);
+    printf("    %d       %d\n",roleta->prim->prox->prox->prox->prox->prox->prox->prox->prox->info,roleta->prim->prox->prox->info);
+    printf("    %d       %d\n",roleta->prim->prox->prox->prox->prox->prox->prox->prox->info,roleta->prim->prox->prox->prox->info);
+    printf("     %d     %d\n",roleta->prim->prox->prox->prox->prox->prox->prox->info,roleta->prim->prox->prox->prox->prox->info);
+    printf("        %d\n",roleta->prim->prox->prox->prox->prox->prox->info);
+ }
+
+
+ //aqui tem um print e um pause só pra testar se tá tudo funcionando mesmo, podemos tirar
+
+printf("\n \n \n \n O numero sorteado foi %d! \n \n \n \n", roleta->prim->info);
+system("pause");
+system("cls");
+}
+
+
 
 
 //void fimRoleta(){
