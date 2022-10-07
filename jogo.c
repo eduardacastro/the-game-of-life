@@ -3,6 +3,8 @@
 #include "tabuleiro_lista_enc_dupla.h"
 #include "jogo.h"
 #include <stdio.h>
+#include <unistd.h>
+#include <windows.h>
 #include <stdlib.h>
 
 void printTelaInicial(){
@@ -74,19 +76,34 @@ void jogo(){
 
     do {
         system("cls");
+        printf("\-> Saldo dos Jogadores:");
         imprimeJogador(jogadores);
         printf("\n\n\n\t-> Vez do Jogador %d:\n\n", jogador->info.numJogador);     // printa de qual jogador é a vez
+        printf("\n-> Girar a Roleta:\n");
+        printf("\t");
 
-        //numSorteado = giraRoleta(roleta);
-        numSorteado = rodaRoleta(roleta);                                       // sorteia o numero da roleta
+        if(jogador->info.numJogador == 2){
+            sleep(2);
+        }else{
+            system("pause");
+        }
 
-        andarCasas(tabuleiro,jogador, numSorteado->info.numero , roleta);                     // anda no tabuleiro o numero de casas sorteadas
 
-        jogador = jogador->prox;                                                // muda para o proximo jogador
+        numSorteado = giraRoleta(roleta);
+        printf("-> Vez do Jogador %d:\n\n", jogador->info.numJogador);
+
+        andarCasas(tabuleiro,jogador, numSorteado , roleta);                     // anda no tabuleiro o numero de casas sorteadas
 
         imprimeJogador(jogadores);                                              // imprime os dados dos jogadores
 
-        system("pause");
+        if(jogador->info.numJogador == 2){
+            sleep(8);
+        }else{
+            system("pause");
+        }
+
+        jogador = jogador->prox;                                                // muda para o proximo jogador
+
 
     } while (jogador->info.posicao<80 && jogador->info.dinheiro > 0);
 

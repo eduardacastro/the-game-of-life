@@ -146,7 +146,7 @@ void delay(int ms)
 
 
 //função que gira a roleta (ta com O(n2), mas ficou legal visualmente)
-int giraRoleta (ListaEncCircularRoleta *roleta){
+NodoLEncCircularRoleta* giraRoleta (ListaEncCircularRoleta *roleta){
      int aleat, numSorteado, i = 0;
 
      aleat = sorteiaNumero();
@@ -160,24 +160,26 @@ int giraRoleta (ListaEncCircularRoleta *roleta){
 
     roleta->prim = roleta->prim->prox;
 
-        printf("        \\/\n");
-        printf("        %d\n", roleta->prim->info);
-        printf("     %d     %d\n",roleta->prim->prox->prox->prox->prox->prox->prox->prox->prox->prox->info,roleta->prim->prox->info);
-        printf("    %d       %d\n",roleta->prim->prox->prox->prox->prox->prox->prox->prox->prox->info,roleta->prim->prox->prox->info);
-        printf("    %d       %d\n",roleta->prim->prox->prox->prox->prox->prox->prox->prox->info,roleta->prim->prox->prox->prox->info);
-        printf("     %d    %d\n",roleta->prim->prox->prox->prox->prox->prox->prox->info,roleta->prim->prox->prox->prox->prox->info);
-        printf("        %d\n",roleta->prim->prox->prox->prox->prox->prox->info);
+        printf("\t\t        \\/\n");
+        printf("\t\t        %d\n", roleta->prim->info);
+        printf("\t\t     %d     %d\n",roleta->prim->prox->prox->prox->prox->prox->prox->prox->prox->prox->info,roleta->prim->prox->info);
+        printf("\t\t    %d       %d\n",roleta->prim->prox->prox->prox->prox->prox->prox->prox->prox->info,roleta->prim->prox->prox->info);
+        printf("\t\t    %d       %d\n",roleta->prim->prox->prox->prox->prox->prox->prox->prox->info,roleta->prim->prox->prox->prox->info);
+        printf("\t\t     %d    %d\n",roleta->prim->prox->prox->prox->prox->prox->prox->info,roleta->prim->prox->prox->prox->prox->info);
+        printf("\t\t        %d\n",roleta->prim->prox->prox->prox->prox->prox->info);
     }
 
 
      //aqui tem um print e um pause só pra testar se tá tudo funcionando mesmo, podemos tirar
 
 
-    printf("\n \n \n \n O numero sorteado foi %d! \n \n \n \n", roleta->prim->info);
+
+    printf("\n \n \n \n\t\t O numero sorteado foi %d! \n \n \n \n", roleta->prim->info);
     numSorteado = roleta->prim->info.numero;
 
     //system("pause");
-    return numSorteado;
+
+    return roleta->prim->info.numero;
 
 }
 
