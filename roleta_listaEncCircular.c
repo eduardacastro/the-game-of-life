@@ -176,6 +176,7 @@ int giraRoleta (ListaEncCircularRoleta *roleta){
     printf("\n \n \n \n O numero sorteado foi %d! \n \n \n \n", roleta->prim->info);
     numSorteado = roleta->prim->info.numero;
 
+    //system("pause");
     return numSorteado;
 
 }

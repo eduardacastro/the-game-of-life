@@ -33,7 +33,7 @@ ListaEnc2* iniciaTabuleiro(){
     InfoCasa infoCasa12 = {12, 1,"Diploma Universitario! Salario de R$ 16.000. Ande mais 1 casa!", 16000, 1, 1,0};
     InfoCasa infoCasa13 = {13, 3,"Dia do Pagamento!", 0, 0, 0,0};
 
-    InfoCasa infoCasa14 = {14, 4,"Hoje eh seu aniversario! Receba R$ 1.000 de cada jogador", 1000, 0, 0,0};
+    InfoCasa infoCasa14 = {14, 4,"Hoje eh seu aniversario! Receba R$ 1.000 .", 1000, 0, 0,0};
     InfoCasa infoCasa15 = {15, 2,"Achou Tesouro antigo no quintal. Receba R$ 24.000 .", 24000, 0, 0,0};
     InfoCasa infoCasa16 = {16, 2,"Voce vai abrir um negocio. Pague R$ 30.000 .", -30000, 0, 0,0};
     InfoCasa infoCasa17 = {17, 2,"Heranca! Receba R$ 300.000 .", 300000, 0, 0,0};
@@ -223,9 +223,9 @@ void andarCasas(ListaEnc2* tabuleiro, NodoLEncCircularJogador *jogador, int nume
             if (auxtab->infoCasa.andaCasa != 0){                                // Verifica seénecessario andar casas
                 aux->info.posicao += auxtab->infoCasa.quantasCasas;             // Anda as casas
                 if (auxtab->infoCasa.quantasCasas < 0) {                        // Verifica se é uma casa de avançar ou retroceder
-                    printf("Voce Retrocedeu %.f Casas", auxtab->infoCasa.quantasCasas);
+                    printf("\t\tVoce Retrocedeu %.f Casas", auxtab->infoCasa.quantasCasas);
                 }else{
-                    printf("Voce Avançou %.f Casas", auxtab->infoCasa.quantasCasas);
+                    printf("\t\tVoce Avancou %.f Casas", auxtab->infoCasa.quantasCasas);
                 }
             }
             break;
@@ -233,7 +233,7 @@ void andarCasas(ListaEnc2* tabuleiro, NodoLEncCircularJogador *jogador, int nume
         case 2:                                                                 // Perde Dinheiro/Ganha Dinheiro
             aux->info.dinheiro += auxtab->infoCasa.Dinheiro;                    // Realiza a soma do Dinheiro
             foiFimDeJogo = fimDeJogoPorDinheiro(aux);
-            printf("\n\n\n Dinheiro: %d", aux->info.dinheiro);
+            //printf("\n\n\n Dinheiro: %d", aux->info.dinheiro);
             break;
 
         case 3:                                                                 //Dia do Pagamento

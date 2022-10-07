@@ -74,9 +74,10 @@ void jogo(){
 
     do {
         system("cls");
+        imprimeJogador(jogadores);
         printf("\n\n\n\t-> Vez do Jogador %d:\n\n", jogador->info.numJogador);     // printa de qual jogador é a vez
 
-        //giraRoleta(roleta);
+        //numSorteado = giraRoleta(roleta);
         numSorteado = rodaRoleta(roleta);                                       // sorteia o numero da roleta
 
         andarCasas(tabuleiro,jogador, numSorteado->info.numero , roleta);                     // anda no tabuleiro o numero de casas sorteadas

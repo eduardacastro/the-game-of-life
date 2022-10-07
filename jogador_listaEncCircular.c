@@ -25,7 +25,7 @@ void imprimeJogador(ListaEncCircularJogador *jogadores){
     NodoLEncCircularJogador *aux;
 	int flag = 0;
     printf("\n\t-----------------------------------------\n");
-   
+
    	for(aux = jogadores->prim; flag != 1; aux = aux->prox){
    	      	printf("\t%d | posicao:%d dinheiro: %d familia: %d\n", aux->info.numJogador,
                                                            aux->info.posicao,
@@ -41,7 +41,7 @@ void imprimeJogador(ListaEncCircularJogador *jogadores){
 // Funcao que insere um nodo no inicio de uma lista
 int insereInicioListaJogador(ListaEncCircularJogador *jogador, InfoJogador info){
     NodoLEncCircularJogador *novo = (NodoLEncCircularJogador*)malloc(sizeof(NodoLEncCircularJogador));
-   
+
     if (jogador->prim == NULL){
         novo->info = info;
         jogador->prim = novo;
@@ -67,14 +67,14 @@ NodoLEncCircularJogador* buscaInfoJogadorListaJogador(ListaEncCircularJogador* j
 		printf("num %d \n", aux->info.numJogador);
         	aux = aux->prox;
    }
-  
-   return NULL; 
+
+   return NULL;
 }
 
 // Funcao que remove um nodo com uma informacao de uma lista
 int removeInfoListaJogador(ListaEncCircularJogador* jogador, int numJogador){
     NodoLEncCircularJogador* ant = NULL;
-    NodoLEncCircularJogador *aux = jogador->prim; 
+    NodoLEncCircularJogador *aux = jogador->prim;
     while(aux != NULL && aux->info.numJogador != numJogador){
         ant = aux;
         aux = aux->prox;
@@ -94,14 +94,14 @@ ListaEncCircularJogador* iniciaJogadores(){
 	int retorno;
 	ListaEncCircularJogador *lista;
 	lista = criaJogador();
-       
-	InfoJogador info1 = {1,0,10000,1};
-	InfoJogador info2 = {2,0,10000,1};
-	
+
+	InfoJogador info1 = {1,0,0,10000,1};
+	InfoJogador info2 = {2,0,0,10000,1};
+
     retorno = insereInicioListaJogador(lista, info2); // retorno = 1
 	retorno = insereInicioListaJogador(lista, info1); // retorno = 1
     imprimeJogador(lista);
-    
+
     return lista;
 }
 
