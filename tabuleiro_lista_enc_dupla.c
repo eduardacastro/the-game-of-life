@@ -41,24 +41,24 @@ ListaEnc2* iniciaTabuleiro(){
     InfoCasa infoCasa19 = {19, 3,"Dia do Pagamento!", 0, 0, 0,0};
 
     retorno = insereInicioListaTabuleiro(lista, infoCasa19);
-//    retorno = insereInicioListaTabuleiro(lista, infoCasa18);
-//    retorno = insereInicioListaTabuleiro(lista, infoCasa17);
-//    retorno = insereInicioListaTabuleiro(lista, infoCasa16);
-//    retorno = insereInicioListaTabuleiro(lista, infoCasa15);
-//    retorno = insereInicioListaTabuleiro(lista, infoCasa14); // retorno = 1
-//    retorno = insereInicioListaTabuleiro(lista, infoCasa13); // retorno = 1
-//    retorno = insereInicioListaTabuleiro(lista, infoCasa12); // retorno = 1
-//    retorno = insereInicioListaTabuleiro(lista, infoCasa11); // retorno = 1
-//    retorno = insereInicioListaTabuleiro(lista, infoCasa10);
-//    retorno = insereInicioListaTabuleiro(lista, infoCasa9); // retorno = 1
-//    retorno = insereInicioListaTabuleiro(lista, infoCasa8); // retorno = 1
-//    retorno = insereInicioListaTabuleiro(lista, infoCasa7); // retorno = 1
-//    retorno = insereInicioListaTabuleiro(lista, infoCasa6); // retorno = 1
-//    retorno = insereInicioListaTabuleiro(lista, infoCasa5);
-//    retorno = insereInicioListaTabuleiro(lista, infoCasa4); // retorno = 1
-//    retorno = insereInicioListaTabuleiro(lista, infoCasa3); // retorno = 1
-//    retorno = insereInicioListaTabuleiro(lista, infoCasa2); // retorno = 1
-//    retorno = insereInicioListaTabuleiro(lista, infoCasa1);
+    retorno = insereInicioListaTabuleiro(lista, infoCasa18);
+    retorno = insereInicioListaTabuleiro(lista, infoCasa17);
+    retorno = insereInicioListaTabuleiro(lista, infoCasa16);
+    retorno = insereInicioListaTabuleiro(lista, infoCasa15);
+    retorno = insereInicioListaTabuleiro(lista, infoCasa14); // retorno = 1
+    retorno = insereInicioListaTabuleiro(lista, infoCasa13); // retorno = 1
+    retorno = insereInicioListaTabuleiro(lista, infoCasa12); // retorno = 1
+    retorno = insereInicioListaTabuleiro(lista, infoCasa11); // retorno = 1
+    retorno = insereInicioListaTabuleiro(lista, infoCasa10);
+    retorno = insereInicioListaTabuleiro(lista, infoCasa9); // retorno = 1
+    retorno = insereInicioListaTabuleiro(lista, infoCasa8); // retorno = 1
+    retorno = insereInicioListaTabuleiro(lista, infoCasa7); // retorno = 1
+    retorno = insereInicioListaTabuleiro(lista, infoCasa6); // retorno = 1
+    retorno = insereInicioListaTabuleiro(lista, infoCasa5);
+    retorno = insereInicioListaTabuleiro(lista, infoCasa4); // retorno = 1
+    retorno = insereInicioListaTabuleiro(lista, infoCasa3); // retorno = 1
+    retorno = insereInicioListaTabuleiro(lista, infoCasa2); // retorno = 1
+    retorno = insereInicioListaTabuleiro(lista, infoCasa1);
 
     return  lista;
 
@@ -159,7 +159,7 @@ int buscaInfoListaFinalTabuleiro(ListaEnc2* tabuleiro, NodoLEncCircularJogador *
 
 
 // Funcao que insere um nodo no inicio de uma lista
-int insereInicioListaTabuleiro(ListaEnc2 *lista, {){
+int insereInicioListaTabuleiro(ListaEnc2 *lista, InfoCasa infoCasa){
    NodoLEnc2 *novo = (NodoLEnc2*)malloc(sizeof(NodoLEnc2));
    novo->infoCasa = infoCasa;
    novo->ant = NULL;
