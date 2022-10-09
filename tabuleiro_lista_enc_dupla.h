@@ -1,5 +1,5 @@
 #include "jogador_listaEncCircular.h"
-
+#include "jogo.h"
 #ifndef _TABULEIRO_LISTA_ENC_DUPLA_H_
 #define _TABULEIRO_LISTA_ENC_DUPLA_H_
 
@@ -62,6 +62,8 @@ void diaDoPagamento(NodoLEncCircularJogador *jogador, int numeroDeCasasDeDiaDoPa
 int fimDeJogoPorDinheiro(NodoLEncCircularJogador *jogador);
 
 ListaEnc2* iniciaTabuleiro();
+
+int fimDeJogoPorDinheiro(NodoLEncCircularJogador *jogador);
 
 int fimDeJogoPorPosicao(ListaEncCircularJogador* listaDeJogadores, NodoLEncCircularJogador *jogador);
 

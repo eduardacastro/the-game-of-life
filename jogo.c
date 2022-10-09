@@ -138,3 +138,30 @@ void imprimeRegras(){
     system("cls");
     telaInicial();
 }
+
+int fimDeJogoPorDinheiro(NodoLEncCircularJogador *jogador){ //Na main, criamos uma variavel de controle iniciada como 0. Se ela mudar para 1, o jogo acaba. o while do jogo depende dessa variavel
+    if (jogador->info.dinheiro <= 0){
+            printf("O jogador %d entrou em falencia! \n\nParabens, jogador %d, voce eh o vencedor do jogo da vida, com um caixa de $%d!", jogador->info.numJogador, (jogador->info.numJogador%2+1), jogador->prox->info.dinheiro);
+        return 1;
+    }else
+    return 0;
+}
+
+
+int fimDeJogoPorPosicao(ListaEncCircularJogador* listaDeJogadores, NodoLEncCircularJogador *jogador){ //Para burlar essa conferência, podemos chamar essa função no início da rodada
+if(jogador->info.posicao >= 80){
+    jogador->info.dinheiro=jogador->info.dinheiro+(jogador->info.familia-1)*5000;
+    jogador->prox->info.dinheiro=jogador->prox->info.dinheiro+(jogador->prox->info.familia-1)*5000;
+
+    if(jogador ->info.dinheiro > jogador->prox->info.dinheiro)
+        printf("O jogador %d ganhou! Alguem chegou no fim do tabuleiro e ele tinha mais dinheiro.\n\nJogador 1: $%d\nJogador 2: $%d \n", jogador->info.numJogador, listaDeJogadores->prim->info.dinheiro, listaDeJogadores->prim->prox->info.dinheiro);
+
+        else if(jogador ->info.dinheiro < jogador->prox->info.dinheiro)
+        printf("O jogador %d ganhou! Alguem chegou no fim do tabuleiro e ele tinha mais dinheiro.\n\nJogador 1: $%d\nJogador 2: $%d \n", jogador->prox->info.numJogador, listaDeJogadores->prim->info.dinheiro, listaDeJogadores->prim->prox->info.dinheiro);
+
+        else printf("Empate! Ambos os jogadores acabaram com $%d", jogador->info.dinheiro);
+
+        return 1;
+}
+    return 0;
+}

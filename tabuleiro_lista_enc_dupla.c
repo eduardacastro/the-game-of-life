@@ -1,8 +1,9 @@
 #include "jogador_listaEncCircular.h"
 #include "roleta_listaEncCircular.h"
 #include "tabuleiro_lista_enc_dupla.h"
+#include "jogo.h"
 #include <stdio.h>
-//#include <windows.h>
+#include <windows.h>
 #include <stdlib.h>
 
 // Funcao que cria uma lista
@@ -365,6 +366,10 @@ void andarCasas(ListaEnc2* tabuleiro, NodoLEncCircularJogador *jogador, int nume
         case 2:                                                                 // Perde Dinheiro/Ganha Dinheiro
             aux->info.dinheiro += auxtab->infoCasa.Dinheiro;                    // Realiza a soma do Dinheiro
             foiFimDeJogo = fimDeJogoPorDinheiro(aux);
+            if(foiFimDeJogo == 1){
+                system("pause");
+                printTelaInicial();
+            }
             break;
 
         case 3:                                                                 //Dia do Pagamento
@@ -412,6 +417,9 @@ void diaDoPagamento(NodoLEncCircularJogador *jogador, int numeroDeCasasDeDiaDoPa
     for (i = 0; i < numeroDeCasasDeDiaDoPagamento; i++){
         jogador->info.dinheiro += jogador->info.salario;    //Realiza o pagamento do salario
     }
+    if ( i > 0){
+        printf("\n\tVoce passou por %d casa(s) do pagamento.\n\tSeu saldo eh: %d\n\n", i, jogador->info.dinheiro);
+    }
 }
 
 
@@ -425,19 +433,29 @@ void imprimeCasaAtual(int num, ListaEnc2* tabuleiro, NodoLEncCircularJogador *jo
 
 }
 
-int fimDeJogoPorDinheiro(NodoLEncCircularJogador *jogador){
-    if (jogador->info.dinheiro == 0){
+int fimDeJogoPorDinheiro(NodoLEncCircularJogador *jogador){ //Na main, criamos uma variavel de controle iniciada como 0. Se ela mudar para 1, o jogo acaba. o while do jogo depende dessa variavel
+    if (jogador->info.dinheiro <= 0){
+            printf("\n\n\tO jogador %d entrou em falencia! \n\nParabens, jogador %d, voce eh o vencedor do jogo da vida, com um caixa de $%d!", jogador->info.numJogador, (jogador->info.numJogador%2+1), jogador->prox->info.dinheiro);
         return 1;
-    }
+    }else
     return 0;
 }
 
 
-//int fimDeJogoPorPosicao(ListaEncCircularJogador* listaDeJogadores, NodoLEncCircularJogador *jogador){
-//    if (listaDeJogadores->fim == jogador->prox){
-//        return 1;                                   // Caso em que precisa que o 2 jogador jogue antes de acabar o jogo
-//    }else {
-//        return 2;                                   // Caso em que nao precisa que o outro jogador jogue, por ser o ultimo a ter jogado
-//    }
-//    return 0;
-//}
+int fimDeJogoPorPosicao(ListaEncCircularJogador* listaDeJogadores, NodoLEncCircularJogador *jogador){ //Para burlar essa conferência, podemos chamar essa função no início da rodada
+    if(jogador->info.posicao >= 80){
+        jogador->info.dinheiro=jogador->info.dinheiro+(jogador->info.familia-1)*5000;
+        jogador->prox->info.dinheiro=jogador->prox->info.dinheiro+(jogador->prox->info.familia-1)*5000;
+
+        if(jogador ->info.dinheiro > jogador->prox->info.dinheiro)
+            printf("O jogador %d ganhou! Alguem chegou no fim do tabuleiro e ele tinha mais dinheiro.\n\nJogador 1: $%d\nJogador 2: $%d \n", jogador->info.numJogador, listaDeJogadores->prim->info.dinheiro, listaDeJogadores->prim->prox->info.dinheiro);
+
+            else if(jogador ->info.dinheiro < jogador->prox->info.dinheiro)
+            printf("O jogador %d ganhou! Alguem chegou no fim do tabuleiro e ele tinha mais dinheiro.\n\nJogador 1: $%d\nJogador 2: $%d \n", jogador->prox->info.numJogador, listaDeJogadores->prim->info.dinheiro, listaDeJogadores->prim->prox->info.dinheiro);
+
+            else printf("Empate! Ambos os jogadores acabaram com $%d", jogador->info.dinheiro);
+
+            return 1;
+    }
+    return 0;
+}
