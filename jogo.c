@@ -74,7 +74,10 @@ void jogo(){
 
     jogador = jogadores->prim;                  // Recebe o primeiro Jogador
 
+    int houveFimDeJogoPorPosicao = 0, foiFimDeJogoPorDinheiro = 0;
+
     do {
+
         system("cls");
         printf("\-> Saldo dos Jogadores:");
         imprimeJogador(jogadores);
@@ -90,22 +93,30 @@ void jogo(){
 
 
         numSorteado = giraRoleta(roleta);
+        printf("\n");
+        printf("\-> Saldo dos Jogadores:");
+        imprimeJogador(jogadores);
         printf("-> Vez do Jogador %d:\n\n", jogador->info.numJogador);
-
         andarCasas(tabuleiro,jogador, numSorteado , roleta);                     // anda no tabuleiro o numero de casas sorteadas
 
         imprimeJogador(jogadores);                                              // imprime os dados dos jogadores
 
         if(jogador->info.numJogador == 2){
-            sleep(8);
+            sleep(12);
         }else{
             system("pause");
         }
 
+        houveFimDeJogoPorPosicao = fimDeJogoPorPosicao(tabuleiro,jogador);
+        foiFimDeJogoPorDinheiro = fimDeJogoPorDinheiro(jogador);
+
         jogador = jogador->prox;                                                // muda para o proximo jogador
 
 
-    } while (jogador->info.posicao<80 && jogador->info.dinheiro > 0);
+    } while(houveFimDeJogoPorPosicao == 0 && foiFimDeJogoPorDinheiro == 0);
+
+    system("pause");
+    telaInicial();
 
 }
 
@@ -141,7 +152,7 @@ void imprimeRegras(){
 
 int fimDeJogoPorDinheiro(NodoLEncCircularJogador *jogador){ //Na main, criamos uma variavel de controle iniciada como 0. Se ela mudar para 1, o jogo acaba. o while do jogo depende dessa variavel
     if (jogador->info.dinheiro <= 0){
-            printf("O jogador %d entrou em falencia! \n\nParabens, jogador %d, voce eh o vencedor do jogo da vida, com um caixa de $%d!", jogador->info.numJogador, (jogador->info.numJogador%2+1), jogador->prox->info.dinheiro);
+            printf("\nO jogador %d entrou em falencia! \n\nParabens, jogador %d, voce eh o vencedor do jogo da vida, com um caixa de $%d!\n\n", jogador->info.numJogador, (jogador->info.numJogador%2+1), jogador->prox->info.dinheiro);
         return 1;
     }else
     return 0;
@@ -149,19 +160,19 @@ int fimDeJogoPorDinheiro(NodoLEncCircularJogador *jogador){ //Na main, criamos u
 
 
 int fimDeJogoPorPosicao(ListaEncCircularJogador* listaDeJogadores, NodoLEncCircularJogador *jogador){ //Para burlar essa conferência, podemos chamar essa função no início da rodada
-if(jogador->info.posicao >= 80){
-    jogador->info.dinheiro=jogador->info.dinheiro+(jogador->info.familia-1)*5000;
-    jogador->prox->info.dinheiro=jogador->prox->info.dinheiro+(jogador->prox->info.familia-1)*5000;
+    if(jogador->info.posicao >= 80){
+        jogador->info.dinheiro=jogador->info.dinheiro+(jogador->info.familia-1)*5000;
+        jogador->prox->info.dinheiro=jogador->prox->info.dinheiro+(jogador->prox->info.familia-1)*5000;
 
-    if(jogador ->info.dinheiro > jogador->prox->info.dinheiro)
-        printf("O jogador %d ganhou! Alguem chegou no fim do tabuleiro e ele tinha mais dinheiro.\n\nJogador 1: $%d\nJogador 2: $%d \n", jogador->info.numJogador, listaDeJogadores->prim->info.dinheiro, listaDeJogadores->prim->prox->info.dinheiro);
+        if(jogador ->info.dinheiro > jogador->prox->info.dinheiro)
+            printf("O jogador %d ganhou! Alguem chegou no fim do tabuleiro e ele tinha mais dinheiro.\n\nJogador 1: $%d\nJogador 2: $%d \n", jogador->info.numJogador, listaDeJogadores->prim->info.dinheiro, listaDeJogadores->prim->prox->info.dinheiro);
 
-        else if(jogador ->info.dinheiro < jogador->prox->info.dinheiro)
-        printf("O jogador %d ganhou! Alguem chegou no fim do tabuleiro e ele tinha mais dinheiro.\n\nJogador 1: $%d\nJogador 2: $%d \n", jogador->prox->info.numJogador, listaDeJogadores->prim->info.dinheiro, listaDeJogadores->prim->prox->info.dinheiro);
+            else if(jogador ->info.dinheiro < jogador->prox->info.dinheiro)
+            printf("O jogador %d ganhou! Alguem chegou no fim do tabuleiro e ele tinha mais dinheiro.\n\nJogador 1: $%d\nJogador 2: $%d \n", jogador->prox->info.numJogador, listaDeJogadores->prim->info.dinheiro, listaDeJogadores->prim->prox->info.dinheiro);
 
-        else printf("Empate! Ambos os jogadores acabaram com $%d", jogador->info.dinheiro);
+            else printf("Empate! Ambos os jogadores acabaram com $%d", jogador->info.dinheiro);
 
-        return 1;
-}
+            return 1;
+    }
     return 0;
 }

@@ -365,11 +365,6 @@ void andarCasas(ListaEnc2* tabuleiro, NodoLEncCircularJogador *jogador, int nume
 
         case 2:                                                                 // Perde Dinheiro/Ganha Dinheiro
             aux->info.dinheiro += auxtab->infoCasa.Dinheiro;                    // Realiza a soma do Dinheiro
-            foiFimDeJogo = fimDeJogoPorDinheiro(aux);
-            if(foiFimDeJogo == 1){
-                system("pause");
-                printTelaInicial();
-            }
             break;
 
         case 3:                                                                 //Dia do Pagamento

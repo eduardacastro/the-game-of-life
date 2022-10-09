@@ -24,17 +24,18 @@ void destroiListaCircularJogador(ListaEncCircularJogador *lista){
 void imprimeJogador(ListaEncCircularJogador *jogadores){
     NodoLEncCircularJogador *aux;
 	int flag = 0;
-    printf("\n\t-----------------------------------------\n");
+    printf("\n\t-----------------------------------------------------\n");
 
    	for(aux = jogadores->prim; flag != 1; aux = aux->prox){
-   	      	printf("\t%d | posicao:%d dinheiro: %d familia: %d\n", aux->info.numJogador,
+   	      	printf("\t%d | posicao:%d dinheiro: %d familia: %d salario: %d\n", aux->info.numJogador,
                                                            aux->info.posicao,
                                                            aux->info.dinheiro,
-                                                           aux->info.familia);
+                                                           aux->info.familia,
+                                                           aux->info.salario);
     	if(aux == jogadores->fim){
     		flag++;
 		}
-   		printf("\t-----------------------------------------\n");
+   		printf("\t-----------------------------------------------------\n");
    }
 }
 
