@@ -63,8 +63,4 @@ int fimDeJogoPorDinheiro(NodoLEncCircularJogador *jogador);
 
 ListaEnc2* iniciaTabuleiro();
 
-int fimDeJogoPorDinheiro(NodoLEncCircularJogador *jogador);
-
-int fimDeJogoPorPosicao(ListaEncCircularJogador* listaDeJogadores, NodoLEncCircularJogador *jogador);
-
 #endif
