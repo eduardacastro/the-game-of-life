@@ -3,11 +3,13 @@
 #include <stdlib.h>
 
 
+// Funcao que cria uma lista
 ListaEncCircularJogador* criaJogador(){
    ListaEncCircularJogador *jogador = (ListaEncCircularJogador*)malloc(sizeof(ListaEncCircularJogador));
    jogador->prim = NULL;
    return jogador;
 }
+
 
 // Funcao que destroi uma lista
 void destroiListaCircularJogador(ListaEncCircularJogador *lista){
@@ -19,6 +21,7 @@ void destroiListaCircularJogador(ListaEncCircularJogador *lista){
    }
    free(lista);
 }
+
 
 // Funcao que imprime todos os nodos de uma lista
 void imprimeJogador(ListaEncCircularJogador *jogadores){
@@ -33,11 +36,12 @@ void imprimeJogador(ListaEncCircularJogador *jogadores){
                                                            aux->info.familia,
                                                            aux->info.salario);
     	if(aux == jogadores->fim){
-    		flag++;
+    		flag++; // quando chega no fim da lista a flag se torna 1 e com isso, nao ha mais interaçoes do for
 		}
    		printf("\t-----------------------------------------------------\n");
    }
 }
+
 
 // Funcao que insere um nodo no inicio de uma lista
 int insereInicioListaJogador(ListaEncCircularJogador *jogador, InfoJogador info){
@@ -58,39 +62,8 @@ int insereInicioListaJogador(ListaEncCircularJogador *jogador, InfoJogador info)
     return 1;
 }
 
-// Funcao que resgata um nodo com uma informacao de uma lista
-NodoLEncCircularJogador* buscaInfoJogadorListaJogador(ListaEncCircularJogador* jogador, int num){
-   NodoLEncCircularJogador *aux;
-   int i = 0;
-   aux = jogador->prim;
-   for(i = 1; i <= num; i++){
-		printf("%d\n", i);
-		printf("num %d \n", aux->info.numJogador);
-        	aux = aux->prox;
-   }
 
-   return NULL;
-}
-
-// Funcao que remove um nodo com uma informacao de uma lista
-int removeInfoListaJogador(ListaEncCircularJogador* jogador, int numJogador){
-    NodoLEncCircularJogador* ant = NULL;
-    NodoLEncCircularJogador *aux = jogador->prim;
-    while(aux != NULL && aux->info.numJogador != numJogador){
-        ant = aux;
-        aux = aux->prox;
-    }
-    if (aux != NULL){
-        if (ant == NULL)
-            jogador->prim = aux->prox;
-        else
-            ant->prox = aux->prox;
-            free(aux);
-            return 1;
-    }
-    return 0; // Nao encontrou
-}
-
+// Funcao que inicia os Jogadores
 ListaEncCircularJogador* iniciaJogadores(){
 	int retorno;
 	ListaEncCircularJogador *lista;

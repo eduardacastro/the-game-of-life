@@ -30,37 +30,31 @@ typedef struct ListaEnc2{
 // Funcao que cria uma lista
 ListaEnc2* criaListaTabuleiro();
 
-// Funcao que destroi uma lista
-void destroiListaTabuleiro(ListaEnc2 *lista);
-
-// Funcao que imprime todos os nodos de uma lista
-void imprimeListaTabuleiro(ListaEnc2 *lista);
-
-// Funcao que insere um nodo no inicio de uma lista
-int insereInicioListaTabuleiro(ListaEnc2 *lista, InfoCasa infoCasa);
+// Funcao que inicia os tabuleiros
+ListaEnc2* iniciaTabuleiro();
 
 // Funcao que resgata um nodo com uma informacao de uma lista
 NodoLEnc2* buscaInfoListaTabuleiro(ListaEnc2* lista, int numeroDaCasa);
 
+// Funcao que destroi uma lista
+void destroiListaTabuleiro(ListaEnc2 *lista);
+
+// Funcao que insere um nodo no inicio de uma lista
+int insereInicioListaTabuleiro(ListaEnc2 *lista, InfoCasa infoCasa);
+
 // Funcao que remove um nodo com uma informacao de uma lista
 int removeInfoListaTabuleiro(ListaEnc2* lista, int matricula);
 
+// Imprime a casa Atual do jogador
 void imprimeCasaAtual(int num, ListaEnc2* tabuleiro, NodoLEncCircularJogador *jogador);
 
+// Funcao que realiza o percorrimento do jogador entre as casas
 void andarCasas(ListaEnc2* tabuleiro, NodoLEncCircularJogador *jogador, int numeroDeCasas, ListaEncCircularRoleta* roleta);
 
-int buscaInfoListaFinalTabuleiro(ListaEnc2* tabuleiro, NodoLEncCircularJogador *jogador, int numInicial);
-
-NodoLEnc2* buscaInfoListaInicialTabuleiro(ListaEnc2* lista, NodoLEncCircularJogador *jogador, int casaInicial);
-
-NodoLEncCircularJogador* novoMembroDaFamilia(NodoLEncCircularJogador *jogador, int numeroDeMembros);
-
+// Funcao que verifica se ha dia do pagamento entre as casas inicial e final da posicao do jogador
 int existeDiaDoPagamentoEntreAsCasas(ListaEnc2* lista, NodoLEncCircularJogador *jogador, int inicioCasa, int fimCasa);
 
+// Funcao que realiza o dia do pagamento
 void diaDoPagamento(NodoLEncCircularJogador *jogador, int numeroDeCasasDeDiaDoPagamento);
-
-int fimDeJogoPorDinheiro(NodoLEncCircularJogador *jogador);
-
-ListaEnc2* iniciaTabuleiro();
 
 #endif

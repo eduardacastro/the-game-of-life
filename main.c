@@ -1,3 +1,6 @@
+// Alunos: Eduarda Guterres, Bernando Gehlen e Rodrigo Vanzelotti
+
+
 #include "roleta_listaEncCircular.h"
 #include "jogador_listaEncCircular.h"
 #include "jogo.h"
@@ -8,8 +11,8 @@
 
 int main(){
 
+    // Vai para a tela inicial do Jogo (Menu)
     telaInicial();
-
 
    return 0;
 }

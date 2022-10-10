@@ -20,6 +20,12 @@ typedef struct ListaEncCircularRoleta{
 // Funcao que cria uma lista
 ListaEncCircularRoleta* criaLista();
 
+// Funcao que inicia a roleta
+ListaEncCircularRoleta* iniciaRoleta();
+
+// Funcao que recebe o numero sorteado e printa a roleta
+NodoLEncCircularRoleta* giraRoleta (ListaEncCircularRoleta *roleta);
+
 // Funcao que destroi uma lista
 void destroiListaRoleta(ListaEncCircularRoleta *lista);
 
@@ -29,21 +35,10 @@ void imprimeListaRoleta(ListaEncCircularRoleta *lista);
 // Funcao que insere um nodo no inicio de uma lista
 int insereInicioListaRoleta(ListaEncCircularRoleta *lista, InfoRoleta info);
 
-// Funcao que resgata um nodo com uma informacao de uma lista
-NodoLEncCircularRoleta* buscaInfoListaRoleta(ListaEncCircularRoleta* lista, int numero);
-
-// Funcao que remove um nodo com uma informacao de uma lista
-int removeInfoListaRoleta(ListaEncCircularRoleta* lista, int numero);
-
-ListaEncCircularRoleta* iniciaRoleta();
-
+// Funcao que sorteia o numero randomicamente
 int sorteiaNumero();
 
-NodoLEncCircularRoleta* rodaRoleta(ListaEncCircularRoleta *lista);
-
-NodoLEncCircularRoleta* giraRoleta (ListaEncCircularRoleta *roleta);
-
+// Funcao de delay para fazer a roleta rodar mais devagar
 void delay(int ms);
-
 
 #endif

@@ -24,6 +24,9 @@ typedef struct ListaEncCircularJogador{
 // Funcao que cria uma lista
 ListaEncCircularJogador* criaJogador();
 
+// Funcao que inicia os Jogadores
+ListaEncCircularJogador* iniciaJogadores();
+
 // Funcao que destroi uma lista
 void destroiListaCircularJogador(ListaEncCircularJogador *lista);
 
@@ -32,13 +35,5 @@ void imprimeJogador(ListaEncCircularJogador *jogadores);
 
 // Funcao que insere um nodo no inicio de uma lista
 int insereInicioListaJogador(ListaEncCircularJogador *lista, InfoJogador info);
-
-// Funcao que resgata um nodo com uma informacao de uma lista
-NodoLEncCircularJogador* buscaInfoListaJogador(ListaEncCircularJogador* lista, int numJogador);
-
-// Funcao que remove um nodo com uma informacao de uma lista
-int removeInfoListaJogador(ListaEncCircularJogador* lista, int numJogador);
-
-ListaEncCircularJogador* iniciaJogadores();
 
 #endif

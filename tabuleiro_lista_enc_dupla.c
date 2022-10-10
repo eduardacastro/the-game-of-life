@@ -13,12 +13,12 @@ ListaEnc2* criaListaTabuleiro(){
    return lista;
 }
 
+// Funcao que inicia os tabuleiros
 ListaEnc2* iniciaTabuleiro(){
     int retorno;
-       ListaEnc2 *lista;
-       lista = criaListaTabuleiro();
-
-       // Aqui seriam chamadas as funcoes de inicializacao de nodos
+    ListaEnc2 *lista;
+    lista = criaListaTabuleiro();
+    
 
     InfoCasa infoCasa1 = {1, 2,"Raspou o carro no estacionamento. Pague R$1000.", -1000, 0,0,0};
     InfoCasa infoCasa2 = {2, 2,"Inicio das aulas. Pague a matricula R$5000.", -5000, 0,0,0};
@@ -193,7 +193,7 @@ ListaEnc2* iniciaTabuleiro(){
     retorno = insereInicioListaTabuleiro(lista, infoCasa2); // retorno = 1
     retorno = insereInicioListaTabuleiro(lista, infoCasa1); // retorno = 1
 
-    return  lista;
+    return  lista;  // retorna o tabuleiro
 
 }
 
@@ -202,31 +202,16 @@ void destroiListaTabuleiro(ListaEnc2 *lista){
    NodoLEnc2 *aux = lista->prim;
    while(aux != NULL){
        NodoLEnc2 *tmp = aux->prox;
-       free(aux); // Cuidar ordem do free
+       free(aux);
        aux = tmp;
    }
    free(lista);
 }
 
-// Funcao que imprime todos os nodos de uma lista
-void imprimeListaTabuleiro(ListaEnc2 *lista){
-   NodoLEnc2 *aux;
-   printf("-----------------------------------------\n");
-   for(aux = lista->prim; aux != NULL; aux = aux->ant)
-      printf("%d | tipo: %d Texto: %s (%d) Dinheiro: %.f %d %.f membroDaFamilia: %d\n", aux->infoCasa.numeroDaCasa,
-                               aux->infoCasa.tipoDeCasa,
-                               aux->infoCasa.textoDaCasa,
-                               aux->infoCasa.Dinheiro,
-                               aux->infoCasa.andaCasa,
-                               aux->infoCasa.quantasCasas,
-                               aux->infoCasa.membroDaFamilia);
-   printf("-----------------------------------------\n");
-}
 
 NodoLEnc2* buscaInfoListaTabuleiro(ListaEnc2* lista, int numeroDaCasa){
    NodoLEnc2 *aux;
     aux = lista->prim;
-
 
     for(aux = lista->prim; aux != NULL; aux = aux->prox){
        if (aux->infoCasa.numeroDaCasa == numeroDaCasa){
@@ -236,59 +221,6 @@ NodoLEnc2* buscaInfoListaTabuleiro(ListaEnc2* lista, int numeroDaCasa){
     }
    return NULL;
 }
-
-NodoLEnc2* buscaInfoListaInicialTabuleiro(ListaEnc2* lista, NodoLEncCircularJogador *jogador, int casaInicial){
-   NodoLEnc2 *aux;
-    aux = lista->prim;
-    printf("Primeiro: %d | tipo: %d Texto: %s (%d) Dinheiro: %.f %d %.f membroDaFamilia: %d\n\n\n", aux->infoCasa.numeroDaCasa,
-                                 aux->infoCasa.tipoDeCasa,
-                                 aux->infoCasa.textoDaCasa,
-                                 aux->infoCasa.Dinheiro,
-                                 aux->infoCasa.andaCasa,
-                                 aux->infoCasa.quantasCasas,
-                                 aux->infoCasa.membroDaFamilia);
-
-
-    for(aux = lista->prim; aux != NULL; aux = aux->prox){
-       if (aux->infoCasa.numeroDaCasa == casaInicial){
-           printf("\n\nretornando aux: ");
-           printf("\n%d | tipo: %d Texto: %s (%d) Dinheiro: %.f %d %.f membroDaFamilia: %d\n\n\n", aux->infoCasa.numeroDaCasa,
-                                        aux->infoCasa.tipoDeCasa,
-                                        aux->infoCasa.textoDaCasa,
-                                        aux->infoCasa.Dinheiro,
-                                        aux->infoCasa.andaCasa,
-                                        aux->infoCasa.quantasCasas,
-                                        aux->infoCasa.membroDaFamilia);
-           return aux;
-       }
-
-    }
-   return NULL;
-}
-
-
-
-// Funcao que resgata um nodo com uma informacao de uma lista
-int buscaInfoListaFinalTabuleiro(ListaEnc2* tabuleiro, NodoLEncCircularJogador *jogador, int numInicial){
-    NodoLEnc2 *auxtab;
-    int i = 0;
-
-    auxtab = buscaInfoListaTabuleiro(tabuleiro, numInicial);
-
-
-    while (auxtab->infoCasa.numeroDaCasa != jogador->info.posicao ) {
-        auxtab = auxtab->prox;
-
-        if(auxtab->infoCasa.tipoDeCasa == 3){
-            i ++;
-        }
-
-    }
-
-    return i;
-}
-
-
 
 
 // Funcao que insere um nodo no inicio de uma lista
@@ -328,32 +260,29 @@ int removeInfoListaTabuleiro(ListaEnc2* lista, int numeroDaCasa){
 
 // Funcao que realiza o percorrimento do jogador entre as casas
 void andarCasas(ListaEnc2* tabuleiro, NodoLEncCircularJogador *jogador, int numeroDeCasas, ListaEncCircularRoleta *roleta){
-    int i, casaFinal = 0, novoMembroDaFamilia = 0, casaInicial = 0, resultado = 0, foiFimDeJogo = 0;
-    NodoLEncCircularJogador *aux ;                                              // tipo do nodo do jogador
-    NodoLEnc2 *auxtab;                                                          // tipo do nodo do tabuleiro
+    int i, casaFinal = 0, novoMembroDaFamilia = 0, casaInicial = 0, resultado = 0;
+    NodoLEncCircularJogador *aux ;      // tipo do nodo do jogador
+    NodoLEnc2 *auxtab;                  // tipo do nodo do tabuleiro
 
     aux = jogador;
 
-    casaInicial = aux->info.posicao;                                            // a variavel casaInicial recebe a posicao inicial do jogador
-    aux->info.posicao += numeroDeCasas;                                         // faz o jogador ir para a casa em que a roleta sorteou
-    casaFinal = aux->info.posicao;                                                    // num recebe a posicao final do jogador
+    casaInicial = aux->info.posicao;    // a variavel casaInicial recebe a posicao inicial do jogador
+    aux->info.posicao += numeroDeCasas; // faz o jogador ir para a casa em que a roleta sorteou
+    casaFinal = aux->info.posicao;      // num recebe a posicao final do jogador
 
     resultado = existeDiaDoPagamentoEntreAsCasas(tabuleiro, aux, casaInicial, casaFinal);  // verifica se entre a casa inicial e final há casas do tipo Dia do Pagamento
-    diaDoPagamento(aux, resultado);                                             // realiza o dia do pagamento caso tenha casas entre a inicial e final
+    diaDoPagamento(aux, resultado);     // realiza o dia do pagamento caso tenha casas entre a inicial e final
 
-    //fimDeJogoPorPosicao();
+    auxtab = buscaInfoListaTabuleiro(tabuleiro, casaFinal);     //Busca as informacoes da Casa final
+    imprimeCasaAtual(casaFinal, tabuleiro, jogador);            //Imprime a casa Final (que se torna a casa Atual do jogador)
 
+    switch(auxtab->infoCasa.tipoDeCasa){                        // Verifica que tipo de casa é a Casa atual do jogador
+        case 1:                                                 // casa de profissao: faz com que o jogador receba um salario
+            i = auxtab->infoCasa.Dinheiro;                      // Recebe a informacao de quanto dinheiro o jogador deve receber
+            aux->info.salario = i;                              // Grava o salario do jogador no ponteiro do jogador
+            aux->info.dinheiro += aux->info.salario;            // Dá o salario para o jogador
 
-    auxtab = buscaInfoListaTabuleiro(tabuleiro, casaFinal);                     //Busca as informacoes da Casa final
-    imprimeCasaAtual(casaFinal, tabuleiro, jogador);                            //Imprime a casa Final (que se torna a casa Atual do jogador)
-
-    switch(auxtab->infoCasa.tipoDeCasa){                                        // Verifica que tipo de casa é a Casa atual do jogador
-        case 1:                                                                 // casa de profissao: faz com que o jogador receba um salario
-            i = auxtab->infoCasa.Dinheiro;                                      // Recebe a informacao de quanto dinheiro o jogador deve receber
-            aux->info.salario = i;                                              // Grava o salario do jogador no ponteiro do jogador
-            aux->info.dinheiro += aux->info.salario;                            // Dá o salario para o jogador
-
-            if (auxtab->infoCasa.andaCasa != 0){                                // Verifica seénecessario andar casas
+            if (auxtab->infoCasa.andaCasa != 0){                                // Verifica se énecessario andar casas
                 aux->info.posicao += auxtab->infoCasa.quantasCasas;             // Anda as casas
                 if (auxtab->infoCasa.quantasCasas < 0) {                        // Verifica se é uma casa de avançar ou retroceder
                     printf("\t\tVoce Retrocedeu %.f Casas\n\n", auxtab->infoCasa.quantasCasas);
@@ -374,7 +303,7 @@ void andarCasas(ListaEnc2* tabuleiro, NodoLEncCircularJogador *jogador, int nume
             diaDoPagamento(aux, 1);
             break;
 
-        case 5: //Aumentando a familia
+        case 5:                                                                 //Aumentando a familia
             novoMembroDaFamilia = auxtab->infoCasa.membroDaFamilia;
             aux->info.familia += novoMembroDaFamilia;
             break;
@@ -427,4 +356,3 @@ void imprimeCasaAtual(int num, ListaEnc2* tabuleiro, NodoLEncCircularJogador *jo
     printf("\n\t|Casa: %d |\n\n\t| %s |\n\n", auxtab->infoCasa.numeroDaCasa, auxtab->infoCasa.textoDaCasa);
 
 }
-
