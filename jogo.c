@@ -113,6 +113,9 @@ void jogo(){
                  imprimeJogador(jogadores);                                              // imprime os dados dos jogadores
 
             }
+            if (houveFimDeJogoPorPosicao != 0){
+                 houveFimDeJogoPorPosicao = fimDeJogoPorPosicao(jogadores,jogador);
+            }
 
 	        if(jogador->info.numJogador == 2){
 	            sleep(12);
@@ -122,7 +125,7 @@ void jogo(){
 
 
 	        printf("\n");
-	        houveFimDeJogoPorPosicao = fimDeJogoPorPosicao(jogadores,jogador);
+
 	        foiFimDeJogoPorDinheiro = fimDeJogoPorDinheiro(jogador);
 	        printf("\n");
 

@@ -69,7 +69,7 @@ ListaEncCircularJogador* iniciaJogadores(){
 	ListaEncCircularJogador *lista;
 	lista = criaJogador();
 
-	InfoJogador info1 = {1,79,0,90000,1};
+	InfoJogador info1 = {1,79,0,100000,1};
 	InfoJogador info2 = {2,0,0,10000,1};
 
     retorno = insereInicioListaJogador(lista, info2); // retorno = 1

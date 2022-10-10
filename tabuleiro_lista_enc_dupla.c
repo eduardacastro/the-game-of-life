@@ -271,10 +271,10 @@ int andarCasas(ListaEnc2* tabuleiro, NodoLEncCircularJogador *jogador, int numer
     casaFinal = aux->info.posicao;      // num recebe a posicao final do jogador
 
     if (casaFinal > 80){
-        fimDeJogo = fimDeJogoPorPosicao(jogadores, jogador);
-        if (fimDeJogo == 1){
+        //fimDeJogo = fimDeJogoPorPosicao(jogadores, jogador);
+
             return 1;
-        }
+
     }
 
     resultado = existeDiaDoPagamentoEntreAsCasas(tabuleiro, aux, casaInicial, casaFinal);  // verifica se entre a casa inicial e final há casas do tipo Dia do Pagamento
