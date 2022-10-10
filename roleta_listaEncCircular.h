@@ -24,7 +24,7 @@ ListaEncCircularRoleta* criaLista();
 ListaEncCircularRoleta* iniciaRoleta();
 
 // Funcao que recebe o numero sorteado e printa a roleta
-NodoLEncCircularRoleta* giraRoleta (ListaEncCircularRoleta *roleta);
+int giraRoleta (ListaEncCircularRoleta *roleta);
 
 // Funcao que destroi uma lista
 void destroiListaRoleta(ListaEncCircularRoleta *lista);

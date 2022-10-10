@@ -49,7 +49,7 @@ int removeInfoListaTabuleiro(ListaEnc2* lista, int matricula);
 void imprimeCasaAtual(int num, ListaEnc2* tabuleiro, NodoLEncCircularJogador *jogador);
 
 // Funcao que realiza o percorrimento do jogador entre as casas
-void andarCasas(ListaEnc2* tabuleiro, NodoLEncCircularJogador *jogador, int numeroDeCasas, ListaEncCircularRoleta* roleta);
+int andarCasas(ListaEnc2* tabuleiro, NodoLEncCircularJogador *jogador, int numeroDeCasas, ListaEncCircularJogador* jogadores);
 
 // Funcao que verifica se ha dia do pagamento entre as casas inicial e final da posicao do jogador
 int existeDiaDoPagamentoEntreAsCasas(ListaEnc2* lista, NodoLEncCircularJogador *jogador, int inicioCasa, int fimCasa);

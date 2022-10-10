@@ -18,7 +18,7 @@ ListaEnc2* iniciaTabuleiro(){
     int retorno;
     ListaEnc2 *lista;
     lista = criaListaTabuleiro();
-    
+
 
     InfoCasa infoCasa1 = {1, 2,"Raspou o carro no estacionamento. Pague R$1000.", -1000, 0,0,0};
     InfoCasa infoCasa2 = {2, 2,"Inicio das aulas. Pague a matricula R$5000.", -5000, 0,0,0};
@@ -62,7 +62,7 @@ ListaEnc2* iniciaTabuleiro(){
     InfoCasa infoCasa36 ={36, 2, "Achou pinturas famosas. Recebe R$ 248.000.", 248000,0,0,0};
     InfoCasa infoCasa37 ={37, 2, "Os negocios estao otimos! Receba R$ 100.000.",100000,0,0,0};
     InfoCasa infoCasa38 ={38, 2, "Bateu o carro!. Pague R$ 16.000.", -16000,0,0,0};
-    InfoCasa infoCasa39 ={39, 2, "Sua invencaomaluca deu certo! Receba R$ 50.000.", 50000,0,0,0};
+    InfoCasa infoCasa39 ={39, 2, "Sua invencao maluca deu certo! Receba R$ 50.000.", 50000,0,0,0};
     InfoCasa infoCasa40 ={40, 5, "Voce adotou duas filhas!",0,0,0,2};
     InfoCasa infoCasa41 ={41, 3, "Dia do Pagamento!", 0, 0, 0,0};
 
@@ -259,8 +259,8 @@ int removeInfoListaTabuleiro(ListaEnc2* lista, int numeroDaCasa){
 
 
 // Funcao que realiza o percorrimento do jogador entre as casas
-void andarCasas(ListaEnc2* tabuleiro, NodoLEncCircularJogador *jogador, int numeroDeCasas, ListaEncCircularRoleta *roleta){
-    int i, casaFinal = 0, novoMembroDaFamilia = 0, casaInicial = 0, resultado = 0;
+int andarCasas(ListaEnc2* tabuleiro, NodoLEncCircularJogador *jogador, int numeroDeCasas, ListaEncCircularJogador *jogadores){
+    int i, casaFinal = 0, novoMembroDaFamilia = 0, casaInicial = 0, resultado = 0, fimDeJogo = 0;
     NodoLEncCircularJogador *aux ;      // tipo do nodo do jogador
     NodoLEnc2 *auxtab;                  // tipo do nodo do tabuleiro
 
@@ -269,6 +269,13 @@ void andarCasas(ListaEnc2* tabuleiro, NodoLEncCircularJogador *jogador, int nume
     casaInicial = aux->info.posicao;    // a variavel casaInicial recebe a posicao inicial do jogador
     aux->info.posicao += numeroDeCasas; // faz o jogador ir para a casa em que a roleta sorteou
     casaFinal = aux->info.posicao;      // num recebe a posicao final do jogador
+
+    if (casaFinal > 80){
+        fimDeJogo = fimDeJogoPorPosicao(jogadores, jogador);
+        if (fimDeJogo == 1){
+            return 1;
+        }
+    }
 
     resultado = existeDiaDoPagamentoEntreAsCasas(tabuleiro, aux, casaInicial, casaFinal);  // verifica se entre a casa inicial e final há casas do tipo Dia do Pagamento
     diaDoPagamento(aux, resultado);     // realiza o dia do pagamento caso tenha casas entre a inicial e final

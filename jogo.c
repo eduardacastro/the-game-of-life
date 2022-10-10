@@ -53,9 +53,9 @@ void telaInicial(){
          default:
             printf("\n\nOpcao invalida!\n\n");
             system("pause");
-            telaInicial();      // chaa a tela inicial
+            telaInicial();      // chama a tela inicial
       }
-   }while(opcao != 3);
+   }while(opcao != 3 && opcao != 2 && opcao != 1);
 
 }
 
@@ -77,49 +77,62 @@ void jogo(){
 
     int houveFimDeJogoPorPosicao = 0, foiFimDeJogoPorDinheiro = 0;
 
-    do {
-
+    while(houveFimDeJogoPorPosicao == 0 && foiFimDeJogoPorDinheiro == 0) {
         system("cls");
-        printf("\-> Saldo dos Jogadores:");
-        imprimeJogador(jogadores);
-        printf("\n\n\n\t-> Vez do Jogador %d:\n\n", jogador->info.numJogador);     // printa de qual jogador é a vez
-        printf("\n-> Girar a Roleta:\n");
-        printf("\t");
 
-        if(jogador->info.numJogador == 2){      // Verifica qual eh o jogador para que se for o computador ele rodar automaticamente depois de um tempo
-            sleep(2);
-        }else{
-            system("pause");
-        }
-
-
-        numSorteado = giraRoleta(roleta);   // recebe o numero sorteado
         printf("\n");
-        printf("\-> Saldo dos Jogadores:");
-        imprimeJogador(jogadores);          // imprime os jogadores e suas infos
-        printf("-> Vez do Jogador %d:\n\n", jogador->info.numJogador);
-        andarCasas(tabuleiro,jogador, numSorteado , roleta);                     // anda no tabuleiro o numero de casas sorteadas
-
-        imprimeJogador(jogadores);  // imprime os dados dos jogadores
-
-        if(jogador->info.numJogador == 2){// Verifica qual eh o jogador para que se for o computador ele rodar automaticamente depois de um tempo
-            sleep(12);
-        }else{
-            system("pause");
-        }
-
-        houveFimDeJogoPorPosicao = fimDeJogoPorPosicao(tabuleiro,jogador);  //Verifica se foi fim de jogo por posicao (chegou no fim do tabuleiro, casa 80)
-        foiFimDeJogoPorDinheiro = fimDeJogoPorDinheiro(jogador);    // Verifica se foi fim de jogo por dinheiro, ou seja, se alguem faliu
-
-        jogador = jogador->prox;    // muda para o proximo jogador
+        houveFimDeJogoPorPosicao = fimDeJogoPorPosicao(jogadores,jogador);
+        foiFimDeJogoPorDinheiro = fimDeJogoPorDinheiro(jogador);
+        printf("\n");
 
 
-    } while(houveFimDeJogoPorPosicao == 0 && foiFimDeJogoPorDinheiro == 0);
+        if (houveFimDeJogoPorPosicao == 0 && foiFimDeJogoPorDinheiro == 0){
 
-    system("pause");
-    destroiListaRoleta(roleta);
-    destroiListaTabuleiro(tabuleiro);
-    destroiListaCircularJogador(jogadores);
+            printf("\-> Saldo dos Jogadores:");
+	        imprimeJogador(jogadores);
+	        printf("\n\n\n\t-> Vez do Jogador %d:\n\n", jogador->info.numJogador);     // printa de qual jogador é a vez
+	        printf("\n-> Girar a Roleta:\n");
+	        printf("\t");
+
+	        if(jogador->info.numJogador == 2){
+	            sleep(2);
+	        }else{
+	            system("pause");
+	        }
+
+
+	        numSorteado = giraRoleta(roleta);
+	        printf("\n");
+	        printf("\n-> Saldo dos Jogadores:");
+	        imprimeJogador(jogadores);
+
+
+	        printf("\n-> Vez do Jogador %d:\n\n", jogador->info.numJogador);
+	        houveFimDeJogoPorPosicao = andarCasas(tabuleiro,jogador, numSorteado , roleta);                     // anda no tabuleiro o numero de casas sorteadas
+            if (houveFimDeJogoPorPosicao != 1) {
+                 imprimeJogador(jogadores);                                              // imprime os dados dos jogadores
+
+            }
+
+	        if(jogador->info.numJogador == 2){
+	            sleep(12);
+	        }else{
+	            system("pause");
+	        }
+
+
+	        printf("\n");
+	        houveFimDeJogoPorPosicao = fimDeJogoPorPosicao(jogadores,jogador);
+	        foiFimDeJogoPorDinheiro = fimDeJogoPorDinheiro(jogador);
+	        printf("\n");
+
+
+	        jogador = jogador->prox;                                                // muda para o proximo jogador
+    	}
+
+
+    }
+
     telaInicial();
 
 }
@@ -163,7 +176,7 @@ int fimDeJogoPorDinheiro(NodoLEncCircularJogador *jogador){
 
 // Funcao que verifica se o jogo terminou por posicao
 int fimDeJogoPorPosicao(ListaEncCircularJogador* listaDeJogadores, NodoLEncCircularJogador *jogador){
-    
+
     if(jogador->info.posicao >= 80){ // verifica se a posicao do jogador eh maior que 80
         jogador->info.dinheiro=jogador->info.dinheiro+(jogador->info.familia-1)*5000;
         jogador->prox->info.dinheiro=jogador->prox->info.dinheiro+(jogador->prox->info.familia-1)*5000;
@@ -174,7 +187,7 @@ int fimDeJogoPorPosicao(ListaEncCircularJogador* listaDeJogadores, NodoLEncCircu
             else if(jogador ->info.dinheiro < jogador->prox->info.dinheiro)
             printf("O jogador %d ganhou! Alguem chegou no fim do tabuleiro e ele tinha mais dinheiro.\n\nJogador 1: $%d\nJogador 2: $%d \n", jogador->prox->info.numJogador, listaDeJogadores->prim->info.dinheiro, listaDeJogadores->prim->prox->info.dinheiro);
 
-            else printf("Empate! Ambos os jogadores acabaram com $%d", jogador->info.dinheiro);
+            else printf("Empate! Ambos os jogadores acabaram com $%d\n\n", jogador->info.dinheiro);
 
             return 1;
     }

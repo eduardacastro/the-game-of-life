@@ -74,7 +74,7 @@ ListaEncCircularRoleta* iniciaRoleta(){
 
 
 // Funcao que destroi uma lista
-void destroiLista(ListaEncCircularRoleta *lista){
+void destroiListaRoleta(ListaEncCircularRoleta *lista){
    NodoLEncCircularRoleta *aux = lista->prim;
    while(aux != NULL){
        NodoLEncCircularRoleta *tmp = aux->prox;
@@ -96,14 +96,14 @@ void delay(int ms)
 
 
 // Funcao que recebe o numero sorteado e printa a roleta (ta com O(n2), mas ficou legal visualmente)
-NodoLEncCircularRoleta* giraRoleta (ListaEncCircularRoleta *roleta){
+int giraRoleta (ListaEncCircularRoleta *roleta){
      int aleat, numSorteado, i = 0;
 
-     aleat = sorteiaNumero();
+     aleat = sorteiaNumero() + 5;
      i = aleat;
 
      while(aleat >0){
-        delay (10*i);       //quanto maior o argumento, maior o delay
+        delay (70+10*i);       //quanto maior o argumento, maior o delay
         system("cls");
         i=i+2;              //i vai aumentando pra deixar a roleta mais devagar
         aleat--;
@@ -122,6 +122,7 @@ NodoLEncCircularRoleta* giraRoleta (ListaEncCircularRoleta *roleta){
     printf("\n \n \n \n\t\t O numero sorteado foi %d! \n \n \n \n", roleta->prim->info);
     numSorteado = roleta->prim->info.numero;
 
-    return roleta->prim->info.numero;
+
+    return numSorteado;
 
 }
