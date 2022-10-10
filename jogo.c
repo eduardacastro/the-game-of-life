@@ -81,8 +81,8 @@ void jogo(){
         system("cls");
 
         printf("\n");
-        houveFimDeJogoPorPosicao = fimDeJogoPorPosicao(jogadores,jogador);
-        foiFimDeJogoPorDinheiro = fimDeJogoPorDinheiro(jogador);
+        houveFimDeJogoPorPosicao = fimDeJogoPorPosicao(jogadores,jogador); // Verifica se foi fim de jogo
+        foiFimDeJogoPorDinheiro = fimDeJogoPorDinheiro(jogador); // Verifica se foi fim de jogo
         printf("\n");
 
 
@@ -94,7 +94,7 @@ void jogo(){
 	        printf("\n-> Girar a Roleta:\n");
 	        printf("\t");
 
-	        if(jogador->info.numJogador == 2){
+	        if(jogador->info.numJogador == 2){  // Timer para dar a sensaçao que o pc esta jogando
 	            sleep(2);
 	        }else{
 	            system("pause");
@@ -108,16 +108,17 @@ void jogo(){
 
 
 	        printf("\n-> Vez do Jogador %d:\n\n", jogador->info.numJogador);
-	        houveFimDeJogoPorPosicao = andarCasas(tabuleiro,jogador, numSorteado , roleta);                     // anda no tabuleiro o numero de casas sorteadas
-            if (houveFimDeJogoPorPosicao != 1) {
-                 imprimeJogador(jogadores);                                              // imprime os dados dos jogadores
+	        houveFimDeJogoPorPosicao = andarCasas(tabuleiro,jogador, numSorteado , roleta); // anda no tabuleiro o numero de casas sorteadas
+
+            if (houveFimDeJogoPorPosicao != 1) { // Se nao houve sim ele printa novamente os jogadores para conseguir ver as mudanças
+                 imprimeJogador(jogadores);  // imprime os dados dos jogadores
 
             }
             if (houveFimDeJogoPorPosicao != 0){
                  houveFimDeJogoPorPosicao = fimDeJogoPorPosicao(jogadores,jogador);
             }
 
-	        if(jogador->info.numJogador == 2){
+	        if(jogador->info.numJogador == 2){ // Timer para dar a sensaçao que o pc esta jogando
 	            sleep(12);
 	        }else{
 	            system("pause");
@@ -130,7 +131,7 @@ void jogo(){
 	        printf("\n");
 
 
-	        jogador = jogador->prox;                                                // muda para o proximo jogador
+	        jogador = jogador->prox;   // muda para o proximo jogador
     	}
 
 
@@ -156,6 +157,9 @@ void imprimeRegras(){
     printf("2. Perde/ganha dinheiro: Devido a um acontecimento, ha uma mudanca no dinheiro guardado pelo jogador;\n");
     printf("3. Dia do pagamento: Ao passar por essa casa (nao necessariamente deve ser a casa final do jogador na\nrodada), recebe-se o salario;\n");
     printf("4. Aumenta a familia: o jogador recebe mais um membro da familia.\n \n");
+    printf("\t\t\tDIA DO PAGAMENTO \n\n");
+    printf("\tNo Dia do Pagamento o jogador recebe seu salario, independentemente se o jogador parou ou apenas\n");
+    printf("passou pela casa Dia do Pagamento, ele recebe o seu salario.\n\n");
     printf("\t\t\tFIM DO JOGO \n\n");
     printf("\tCaso algum jogador entre em falencia (isto eh, fique com 0 reais ou devendo), automaticamente\n");
     printf("esta desclassificado e o outro jogador eh o vencedor. Se isso nao acontecer, assim que o primeiro jo-\n");
