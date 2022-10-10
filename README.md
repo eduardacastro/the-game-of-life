@@ -1,6 +1,6 @@
 # Projeto Final da Cadeira de Estrutura de Dados - UFRGS
 
-Alunos: Eduarda Guterres, Bernando Gehlen e Rodrigo Vanzelotti
+Alunos: Eduarda Guterres, Bernardo Gehlen e Rodrigo Vanzelotti
 
 Projeto: Contruir o de tabuleiro Jogo da Vida
 
