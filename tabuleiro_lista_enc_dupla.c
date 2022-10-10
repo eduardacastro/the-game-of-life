@@ -51,7 +51,7 @@ ListaEnc2* iniciaTabuleiro(){
 
     InfoCasa infoCasa27 ={27, 2, "Ajudou seu sogro. Pague R$ 2.000.", -2000,0,0,0 };
     InfoCasa infoCasa28 ={28, 2, "Ganhou na Loteria! Receba R$ 96.000.",96000,0,0,0};
-    InfoCasa infoCasa29 ={29, 2, "Comprouum apartamento. Pague R$ 40.000.",40000,0,0,0};
+    InfoCasa infoCasa29 ={29, 2, "Comprou um apartamento. Pague R$ 40.000.",40000,0,0,0};
     InfoCasa infoCasa30 ={30, 5, "Sua filha nasceu!",0,0,0,1};
     InfoCasa infoCasa31 ={31, 2, "Atravessou o Canal da Mancha nadando. Receba R$ 250.000.",250000,0,0,0};
     InfoCasa infoCasa32 ={32, 5, "Seus Gemeos Nasceram!",0,0,0,2};
@@ -88,7 +88,7 @@ ListaEnc2* iniciaTabuleiro(){
     InfoCasa infoCasa59 ={59, 3, "Dia do Pagamento!", 0, 0, 0,0};
 
     InfoCasa infoCasa60 ={60, 2, "Escreveu um best-seller. Receba R$ 96.000.", 960000,0,0,0};
-    InfoCasa infoCasa61 ={61, 2, "O encanamenti estourou novamente. Pague R$ 10.000.", -10000,0,0,0};
+    InfoCasa infoCasa61 ={61, 2, "O encanamento estourou novamente. Pague R$ 10.000.", -10000,0,0,0};
     InfoCasa infoCasa62 ={62, 2, "Comprou um helicoptero. Pague R$ 100.000.", 100000,0,0,0};
     InfoCasa infoCasa63 ={63, 2, "Seu bode comeu orquideas premiadas. Pague R$ 3.000.", -3000,0,0,0};
     InfoCasa infoCasa64 ={64, 2, "Comprou um iate. Pague R$ 80.000.", -80000,0,0,0};

@@ -56,5 +56,5 @@ O jogador, como o tabuleiro, possui uma estrutura de suas informações que se d
 
 O jogo pode acabar de duas maneiras, pela posição de um jogador ou pelo dinheiro:
 
-- Fim por posição: Nesse caso o jogo acaba quando o primeiro jogador passar por todas as casas, ou seja, quando ele passar da casa 80. Quando isso ocorre, se verifica quando membros o jogador possui na sua familia, que sao transformados em dinheiro multiplicando-se por 50000. E depois é somado com o valor total que ele possui no campo dinheiro.
+- Fim por posição: Nesse caso o jogo acaba quando o primeiro jogador passar por todas as casas, ou seja, quando ele passar da casa 80. Quando isso ocorre, se verifica quando membros o jogador possui na sua familia, que sao transformados em dinheiro multiplicando-se por 5000. E depois é somado com o valor total que ele possui no campo dinheiro.
 - Fim por dinheiro: Acontece quando algum jogador chega a menos de zero no campo do dinheiro. Com isso, automaticamente o outro jogador ganha.
