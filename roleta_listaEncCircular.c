@@ -122,6 +122,7 @@ int giraRoleta (ListaEncCircularRoleta *roleta){
     printf("\n \n \n \n\t\t O numero sorteado foi %d! \n \n \n \n", roleta->prim->info);
     numSorteado = roleta->prim->info.numero;
 
+    delay(1000);
 
     return numSorteado;
 

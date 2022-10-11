@@ -148,10 +148,10 @@ void imprimeRegras(){
     system("cls");
 
     printf("\t\t\tINICIO \n \n");
-    printf("\tO jogador inicia a partida na casa 0, sem emprego definido, com 10000 reais e com um membro na familia (que representa\n");
-    printf("ele mesmo), assim como o computador. Na sua vez de jogar, o jogador deve girar a roleta para descobrir quantas casas\n");
-    printf("(de 1 a 10) deve andar no tabuleiro. Cada casa, alem de seu numero correspondente pode ser classifica-\n");
-    printf("da em uma das categorias abaixo:\n\n");
+    printf("\tO jogador inicia a partida na casa 0, sem emprego definido, com 10000 reais e com um membro\n");
+    printf("na familia (que representa ele mesmo), assim como o computador. Na sua vez de jogar, o jogador deve\n ");
+    printf("girar a roleta para descobrir quantas casas (de 1 a 10) deve andar no tabuleiro. Cada casa, alem de\n");
+    printf("seu numero correspondente pode ser classificada em uma das categorias abaixo:\n\n");
     printf("\t\t\tCASAS\n\n");
     printf("1. Casa de profissao: Estabelece uma profissao e um salario para o jogador;\n");
     printf("2. Perde/ganha dinheiro: Devido a um acontecimento, ha uma mudanca no dinheiro guardado pelo jogador;\n");
